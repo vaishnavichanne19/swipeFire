@@ -1,0 +1,181 @@
+"use client";
+
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import CKEditorClient from "@/app/(admin)/dashboard/CKEditorClient";
+import Input from "@/components/form/input/InputField";
+import Label from "@/components/form/Label";
+import Button from "@/components/ui/button/Button";
+import Link from "next/link";
+
+const Update = () => {
+  const { editid } = useParams();
+  const router = useRouter();
+
+  const [UpdateData, setUpdateData] = useState({
+    heading: "",
+    description: "",
+    subheading: "string",
+    branchname: "string",
+    branchaddress: "string",
+    branchphone: "string",
+    branchemail: "string",
+  });
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      const res = await axios.get(`/api/contact/${editid}`);
+      if (res.data.success) {
+        setUpdateData(res.data.data);
+      }
+    };
+    fetchdata();
+  }, [editid]);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.put(`/api/contact/${editid}`, UpdateData);
+      toast.info("Data Updated Successfully");
+      router.push("/dashboard/contact");
+    } catch (error) {
+      toast.error("Update Failed");
+    }
+  };
+
+  return (
+    <main>
+      <div className="max-w-[700px] lg:m-4 border-1 border-gray-300 rounded-2xl">
+        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
+          <div className="px-2 pr-14">
+            <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
+              Edit Data
+            </h4>
+          </div>
+          <form onSubmit={handleUpdate} className="flex flex-col ">
+            <div className="custom-scrollbar h-[auto] overflow-y-scroll px-2 pb-3">
+              <div className="mt-7">
+                <div className="flex flex-col gap-4">
+                  {UpdateData.heading && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Heading</Label>
+                      <Input
+                        type="text"
+                        id="heading"
+                        value={UpdateData.heading}
+                        onChange={(e) =>
+                          setUpdateData({
+                            ...UpdateData,
+                            heading: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                  )}
+             
+                  {UpdateData.description && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Description</Label>
+                      <CKEditorClient
+                        value={UpdateData.description}
+                        onChange={(data) =>
+                          setUpdateData((prev) => ({
+                            ...prev,
+                            description: data,
+                          }))
+                        }
+                      />
+                    </div>
+                  )}
+
+                  {UpdateData.branchname && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Branch Name</Label>
+                      <Input
+                        type="text"
+                        id="branchname"
+                        value={UpdateData.branchname}
+                        onChange={(e) =>
+                          setUpdateData({
+                            ...UpdateData,
+                            branchname: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                  )}
+
+                  {UpdateData.branchaddress && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Branch Address</Label>
+                      <CKEditorClient
+                        value={UpdateData.branchaddress}
+                        onChange={(data) =>
+                          setUpdateData((prev) => ({
+                            ...prev,
+                            branchaddress: data,
+                          }))
+                        }
+                      />
+                    </div>
+                  )}
+
+                  {UpdateData.branchphone && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Branch Number</Label>
+                      <Input
+                        type="tel"
+                        id="branchphone"
+                        maxLength={10}
+                        value={UpdateData.branchphone}
+                        onChange={(e) =>
+                          setUpdateData({
+                            ...UpdateData,
+                            branchphone: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                  )}
+
+                  {UpdateData.branchemail && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Branch Email</Label>
+                      <Input
+                        type="email"
+                        id="branchemail"
+                        value={UpdateData.branchemail}
+                        onChange={(e) =>
+                          setUpdateData({
+                            ...UpdateData,
+                            branchemail: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 px-2 mt-6 justify-end">
+              <Link
+                href="/dashboard/contact"
+                className="border-2 border-gray-200 px-4 py-2  rounded-lg bg-white hover:bg-gray-50"
+              >
+                Close
+              </Link>
+              <Button size="sm" type="submit">
+                Save Changes
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default Update;
