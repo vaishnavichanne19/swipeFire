@@ -52,7 +52,6 @@ const Products = () => {
       ? resetData
       : resetData.filter((p) => p.category === category);
 
-  console.log("filteredProducts", filteredProducts);
 
   // product type list
   const [activeIndex, setActiveIndex] = useState(0);

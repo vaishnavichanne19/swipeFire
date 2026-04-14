@@ -54,7 +54,6 @@ export default function UserInfoCard() {
 
         if (res.data.success) {
           setUpdateData(res.data.data);
-          console.log("data", res.data.data);
         }
       } catch (error) {
         console.log(error);

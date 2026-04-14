@@ -5,7 +5,10 @@ import { SiTrustpilot } from "react-icons/si";
 import Counter from "./Counter";
 
 async function getAboutData() {
-  const res = await fetch("http://localhost:3000/api/about/aboutsec", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/about/aboutsec`, {
     cache: "no-store",
   });
 
@@ -13,7 +16,10 @@ async function getAboutData() {
 }
 
 async function getProductionData() {
-  const res = await fetch("http://localhost:3000/api/about/production", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/about/production`, {
     cache: "no-store",
   });
 
@@ -21,7 +27,10 @@ async function getProductionData() {
 }
 
 async function getWhatwedoData() {
-  const res = await fetch("http://localhost:3000/api/about/whatwedo", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/about/whatwedo`, {
     cache: "no-store",
   });
 
@@ -29,7 +38,10 @@ async function getWhatwedoData() {
 }
 
 async function getManufactureData() {
-  const res = await fetch("http://localhost:3000/api/about/manufacture", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/about/manufacture`, {
     cache: "no-store",
   });
 
@@ -37,7 +49,10 @@ async function getManufactureData() {
 }
 
 async function getCoreValueData() {
-  const res = await fetch("http://localhost:3000/api/about/corevalue", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/about/corevalue`, {
     cache: "no-store",
   });
 

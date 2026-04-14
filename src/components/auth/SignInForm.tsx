@@ -22,7 +22,7 @@ export default function SignInForm() {
     e.preventDefault();
 
  try {
-      const res = await axios.post("http://localhost:3000/api/auth/login", { email, password });
+      const res = await axios.post("/api/auth/login", { email, password });
 
       if (res.data.success) {
         document.cookie = `adminToken=${res.data.token}; path=/; max-age=86400`;
@@ -38,7 +38,7 @@ export default function SignInForm() {
     <div style={{ height: "100vh" }} className="flex items-center justify-center">
       <div className="shadow border p-5 w-full max-w-md mx-auto">
         <div className="flex justify-center">
-          <Image src="/img/logo.svg" alt="Logo" width={200} height={100} />
+          <Image src="/img/Logo.svg" alt="Logo" width={200} height={100} />
         </div>
 
         <div className="m-5 text-center">

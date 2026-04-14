@@ -4,7 +4,9 @@ import Link from "next/link";
 import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 async function getCertificateData() {
-  const res = await fetch("http://localhost:3000/api/home/certificate", {
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/home/certificate`, {
     cache: "no-store",
   });
 

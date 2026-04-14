@@ -53,7 +53,6 @@ export default function UserInfoCard() {
 
         if (res.data.success) {
           setProductionData(res.data.data);
-          console.log("data", res.data.data);
         }
       } catch (error) {
         console.log(error);

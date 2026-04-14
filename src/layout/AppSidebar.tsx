@@ -393,21 +393,21 @@ const AppSidebar: React.FC = () => {
             <>
               <Image
                 className="dark:hidden"
-                src="/img/logo.svg"
+                src="/img/Logo.svg"
                 alt="Logo"
                 width={150}
                 height={40}
               />
               <Image
                 className="hidden dark:block"
-                src="/img/logo.svg"
+                src="/img/Logo.svg"
                 alt="Logo"
                 width={150}
                 height={40}
               />
             </>
           ) : (
-            <Image src="/img/logo.svg" alt="Logo" width={32} height={32} />
+            <Image src="/img/Logo.svg" alt="Logo" width={32} height={32} />
           )}
         </Link>
       </div>

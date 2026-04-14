@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getProductData() {
-  const res = await fetch("http://localhost:3000/api/product/productdata", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/product/productdata`, {
     cache: "no-store",
   });
 
@@ -10,7 +13,10 @@ async function getProductData() {
 }
 
 async function getProductListData() {
-  const res = await fetch("http://localhost:3000/api/product/productlist", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/product/productlist`, {
     cache: "no-store",
   });
 

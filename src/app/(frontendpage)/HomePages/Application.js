@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function getAllData() {
-  const res = await fetch("http://localhost:3000/api/home/applicationsec", {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL;
+
+  const res = await fetch(`${baseUrl}/api/home/applicationsec`, {
     cache: "no-store",
   });
 

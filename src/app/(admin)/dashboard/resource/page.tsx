@@ -69,7 +69,6 @@ export default function UserInfoCard() {
               type.toLowerCase().trim() === filterType.toLowerCase().trim(),
           ),
         );
-  console.log("filteredData", filteredData);
 
   return (
     <div>
