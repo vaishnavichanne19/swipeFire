@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
@@ -337,4 +337,10 @@ const AddData = () => {
   );
 };
 
-export default AddData;
+export default function AddPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AddData />
+    </Suspense>
+  );
+}

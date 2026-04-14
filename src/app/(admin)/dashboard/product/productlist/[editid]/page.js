@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CKEditorClient from "@/app/(admin)/dashboard/CKEditorClient";
 import Input from "@/components/form/input/InputField";
@@ -393,4 +393,10 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default function UpdatePage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Update />
+    </Suspense>
+  );
+}

@@ -23,7 +23,7 @@ export default function TextAreaInput() {
         {/* Disabled TextArea */}
         <div>
           <Label>Description</Label>
-          <TextArea rows={6} disabled />
+          <TextArea rows={6}  />
         </div>
 
         {/* Error TextArea */}

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "react-toastify";
 import CKEditorClient from "@/app/(admin)/dashboard/CKEditorClient";
 import Input from "@/components/form/input/InputField";
@@ -114,4 +114,10 @@ const AddData = () => {
   );
 };
 
-export default AddData;
+export default function AddPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AddData />
+    </Suspense>
+  );
+}
