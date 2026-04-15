@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../Navbar.js";
 import Footer from "../Footer.js";
 
-import {DM_Sans, Inter, Roboto} from "next/font/google" 
-import AOSInitializer from "../AOSInitializer.jsx"
+import { DM_Sans, Inter, Roboto } from "next/font/google";
+import AOSInitializer from "../AOSInitializer.jsx";
+import Script from "next/script";
 
 const headingFont = DM_Sans({
   subsets: ["latin"],
@@ -37,13 +38,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-52KDBW3T');`,
+          }}
+        />
+      </head>
+
       <body
         className={`${headingFont.variable} ${paraFont.variable} ${anchorFont.variable}`}
       >
-        <Navbar/>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-52KDBW3T"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Navbar />
         <AOSInitializer />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

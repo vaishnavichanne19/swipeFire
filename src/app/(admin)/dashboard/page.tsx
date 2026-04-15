@@ -52,8 +52,8 @@ export default function Dashboard() {
       {/* ══════════════ PRODUCTS SECTION ══════════════ */}
       <section className="mb-12">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-4 justify-between mb-5">
+          <div className="flex  items-center gap-3">
             <span className="block w-1 h-7 rounded-full bg-indigo-500" />
             <h2 className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">
               Recent Products
@@ -105,7 +105,7 @@ export default function Dashboard() {
       {/* ══════════════ BLOGS SECTION ══════════════ */}
       <section>
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex flex-wrap items-center gap-4 justify-between mb-5">
           <div className="flex items-center gap-3">
             <span className="block w-1 h-7 rounded-full bg-rose-500" />
             <h2 className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">
