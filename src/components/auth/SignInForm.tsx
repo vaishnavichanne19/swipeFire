@@ -10,7 +10,6 @@ import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
 export default function SignInForm() {
   const router = useRouter();
 
@@ -21,7 +20,7 @@ export default function SignInForm() {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
- try {
+    try {
       const res = await axios.post("/api/auth/login", { email, password });
 
       if (res.data.success) {
@@ -35,16 +34,17 @@ export default function SignInForm() {
   };
 
   return (
-    <div style={{ height: "100vh" }} className="flex items-center justify-center">
+    <div
+      style={{ height: "100vh" }}
+      className="flex items-center justify-center"
+    >
       <div className="shadow border p-5 w-full max-w-md mx-auto">
         <div className="flex justify-center">
           <Image src="/img/Logo.svg" alt="Logo" width={200} height={100} />
         </div>
 
         <div className="m-5 text-center">
-          <h2 className="mb-2 font-semibold text-gray-800 text-2xl">
-            Sign In
-          </h2>
+          <h2 className="mb-2 font-semibold text-gray-800 text-2xl">Sign In</h2>
           <p className="text-sm text-gray-500">
             Enter your email and password to sign in!
           </p>

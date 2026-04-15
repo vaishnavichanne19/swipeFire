@@ -251,13 +251,13 @@ export default function UserInfoCard() {
                     </TableCell>
                     <TableCell
                       isHeader
-                      className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                      className="hidden md:!table-cell px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
                       Descripion
                     </TableCell>
                     <TableCell
                       isHeader
-                      className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                      className="hidden md:!table-cell px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
                       Application Type
                     </TableCell>
@@ -292,14 +292,14 @@ export default function UserInfoCard() {
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         {data.heading}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <TableCell className="hidden md:!table-cell px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <div
                           dangerouslySetInnerHTML={{
                             __html: limitWords(data.description, 10),
                           }}
                         ></div>
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <TableCell className="hidden md:!table-cell px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <ul className="list-disc">
                           {data.applicationtype
                             .slice(0, 3)

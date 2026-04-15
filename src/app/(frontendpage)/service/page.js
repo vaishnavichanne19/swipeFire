@@ -12,7 +12,7 @@ import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import { FaInstalod } from "react-icons/fa6";
 import Image from "next/image";
 import { TbFireHydrant } from "react-icons/tb";
-import { LuAlarmSmoke } from "react-icons/lu";
+import { LuAlarmSmoke, LuLayoutGrid } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -101,11 +101,15 @@ const Service = () => {
       icon: <LuAlarmSmoke color="#9B2335" size={40} strokeWidth={1} />,
     },
   ];
+
+ const DefaultIcon = () => <LuLayoutGrid color="#9B2335" size={40} strokeWidth={1} />;
+
+
   return (
     <main className="container-fluid">
-      <div className="container-fluid">
-        <div className="service-sec">
-          <div className="container service-para">
+      <div>
+        <div className="service-sec min-h-screen">
+          <div className="container service-para min-h-screen">
             {serviceData
               .filter((user) => user._id === "69b124b95c28b1f406187d77")
               .map((data) => (
@@ -152,7 +156,7 @@ const Service = () => {
                     style={{ borderRadius: "50px" }}
                     className="bg-[#FEF2F2] w-19 h-19 mb-3  flex justify-center items-center"
                   >
-                    {serviceicons[index].icon}
+                    {serviceicons[index]?.icon  || <DefaultIcon/> }
                   </div>
                   <div>
                     <h3>{data.heading}</h3>
@@ -199,14 +203,14 @@ const Service = () => {
                 className="col-lg-4 col-md-5  col-sm-12"
                 data-aos="flip-left"
               >
-                <div className="expertise-card bg-[#FDFFFE] rounded-3xl p-3 mb-5 lg:!mb-1">
+                <div className="expertise-card bg-[#FDFFFE] rounded-3xl md:p-3 mb-5 lg:!mb-1">
                   <div className="bg-[#FEFCF3] p-2">
                     <div className="flex justify-between items-center px-3">
                       <div
                         style={{ borderRadius: "50px" }}
                         className="bg-[#FDFFFE] w-19 h-19 mb-3  flex justify-center items-center"
                       >
-                        {serviceicons[index].icon}
+                        {serviceicons[index]?.icon  || <DefaultIcon/> }
                       </div>
                       <div>
                         <strong>0{index + 1}</strong>

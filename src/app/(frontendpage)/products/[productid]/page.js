@@ -75,7 +75,7 @@ const ProductDetail = () => {
     fetchBestSellingProductList();
   }, []);
 
-    const limitWords = (html, wordLimit) => {
+  const limitWords = (html, wordLimit) => {
     const text = html.replace(/<[^>]*>?/gm, "");
     const words = text.split(" ");
     return (
@@ -84,13 +84,12 @@ const ProductDetail = () => {
     );
   };
 
-
   return (
     <main className="container-fluid  relative">
       <div className="div-spread">
         <div className="product-detail-sec">
           <div className="container">
-            <div className="product-detail-sec-data row flex items-center py-5">
+            <div className="min-h-screen row flex items-center py-5">
               <div className="col-lg-7 col-md-7 col-sm-12">
                 <div>
                   <h2
@@ -355,7 +354,9 @@ const ProductDetail = () => {
                     <div className="shopping-para pt-25 2xl:pt-40 px-3 lg:!px-5 pb-5 lg:!pb-0">
                       <h4>{item.heading}</h4>
                       <p
-                        dangerouslySetInnerHTML={{ __html: limitWords(item.description, 20) }}
+                        dangerouslySetInnerHTML={{
+                          __html: limitWords(item.description, 20),
+                        }}
                       ></p>
                     </div>
                   </div>

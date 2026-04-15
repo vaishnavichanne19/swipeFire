@@ -201,13 +201,13 @@ export default function UserInfoCard() {
                     </TableCell>
                     <TableCell
                       isHeader
-                      className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                      className="hidden md:!table-cell px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
                       Descripion
                     </TableCell>
                     <TableCell
                       isHeader
-                      className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                      className="hidden md:!table-cell px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
                     >
                       Blog Type
                     </TableCell>
@@ -248,12 +248,12 @@ export default function UserInfoCard() {
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         {data.heading}
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <TableCell className="hidden md:!table-cell px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         <div
                           dangerouslySetInnerHTML={{ __html: data.description }}
                         ></div>
                       </TableCell>
-                      <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                      <TableCell className="hidden md:!table-cell px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                         {data.blogtype}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
@@ -264,7 +264,7 @@ export default function UserInfoCard() {
                         })}
                       </TableCell>
                       <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <button
                             onClick={() => {
                               setViewId(data._id);

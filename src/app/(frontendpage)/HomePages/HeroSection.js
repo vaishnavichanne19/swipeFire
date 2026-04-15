@@ -14,8 +14,8 @@ export default async function HeroSection() {
   const alldata = res.data;
 
   return (
-    <main className="container-fluid hero-section py-5">
-      <div className="container hero-container relative ">
+    <main className="container-fluid hero-section min-h-screen">
+      <div className="container hero-container min-h-screen relative ">
         <div className="des1" data-aos="fade-right" data-aos-duration={1500}>
           <Image src="/img/Group 32.svg" alt="" width={100} height={100} />
         </div>
@@ -50,10 +50,10 @@ export default async function HeroSection() {
             </div>
           </div>
         ))}
-        <div className="des3" data-aos="fade-up-right" data-aos-duration={1500}>
+        <div className="des3" data-aos="fade-up-right" data-aos-duration={1000}>
           <Image src="/img/Group 33.svg" alt="" width={100} height={100} />
         </div>
-        <div className="des4" data-aos="fade-up-right" data-aos-duration={1500}>
+        <div className="des4" data-aos="fade-up-right" data-aos-duration={1000}>
           <Image src="/img/Group 34.svg" alt="" width={100} height={100} />
         </div>
       </div>

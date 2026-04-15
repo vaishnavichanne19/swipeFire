@@ -1,14 +1,16 @@
 "use client";
 
 import axios from "axios";
+import { SquareCheck } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { BsLightningChargeFill, BsTrophy, BsTools } from "react-icons/bs";
 
 const featuresicon = [
-  { icon: "✅" },
-  { icon: "⚡" },
-  { icon: "🏅" },
-  { icon: "🔧" },
+  { icon: <SquareCheck size={20} color="#c20016" /> },
+  { icon: <BsLightningChargeFill size={20} color="#c20016" /> },
+  { icon: <BsTrophy size={20} color="#c20016" /> },
+  { icon: <BsTools size={20} color="#c20016" /> },
 ];
 
 export default function SalesPartner() {
@@ -27,7 +29,7 @@ export default function SalesPartner() {
   }, []);
 
   return (
-    <main className="main-spread">
+    <main className="main-spread !mt-40">
       <div className="relative bg-[#1a191d] py-20 overflow-hidden">
         <div className="container">
           <div className="pointer-events-none  absolute right-[-80px] top-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-[radial-gradient(circle,rgba(232,40,30,0.09)_0%,transparent_68%)]" />
@@ -107,9 +109,9 @@ export default function SalesPartner() {
                 {fetchAllData.slice(2,6).map((data, index) => (
                   <div
                     key={data._id}
-                    className="group relative bg-[#141414] border-1 border-[#e8281e24] hover:border-[rgba(232,40,30,0.45)] hover:-translate-y-1 transition-all duration-300 p-[18px] overflow-hidden"
+                    className="group relative bg-[#141414] border-1 border-[#e8281e24] hover:border-[rgba(232,40,30,0.45)] active:border-[rgba(232,40,30,0.45)] hover:-translate-y-1 active:-translate-y-1 transition-all duration-300 p-[18px] overflow-hidden"
                   >
-                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#c20016] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#c20016] scale-x-0 group-hover:scale-x-100 active:scale-x-100 origin-left transition-transform duration-300" />
 
                     <div className="text-[22px] leading-none mb-2">
                       {featuresicon[index]?.icon}
@@ -127,9 +129,9 @@ export default function SalesPartner() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 my-10">
+        <div className="flex  items-center gap-4 my-10">
           <div className="flex-1 h-px bg-[rgba(232,40,30,0.15)]" />
-          <h6 className="tracking-[3px] uppercase !text-[#a09890] whitespace-nowrap">
+          <h6 className="tracking-[3px] text-center uppercase !text-[#a09890] md:whitespace-nowrap whitespace-normal">
             Blaze Guard Products — Swipe Fire Certified
           </h6>
           <div className="flex-1 h-px bg-[rgba(232,40,30,0.15)]" />
@@ -141,14 +143,14 @@ export default function SalesPartner() {
                 {fetchAllData.slice(6).map((data) => (
 
             <div key={data._id} className="col-lg-3 col-md-6 col-sm-12 my-4">
-              <div className="group  relative h-100 bg-[#141414] border-1 border-[rgba(232,40,30,0.14)] hover:border-[rgba(232,40,30,0.5)] hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
-              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#e8281e] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+              <div className="group  relative h-100 bg-[#141414] border-1 border-[rgba(232,40,30,0.14)] hover:border-[rgba(232,40,30,0.5)] active:border-[rgba(232,40,30,0.5)] hover:-translate-y-1 active:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
+              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#e8281e] scale-x-0 group-hover:scale-x-100 active:scale-x-100 origin-left transition-transform duration-300" />
 
               <div className="h-70 w-full relative bg-[#1c1c1c] overflow-hidden">
                 <img
                   src={data.productimg}
                   alt={data.heading}
-                  className="absolute object-contain w-full h-full inset-0 p-2 group-hover:scale-105 transition-transform duration-400"
+                  className="absolute object-contain w-full h-full inset-0 p-2 group-hover:scale-105 active:scale-105 transition-transform duration-400"
                 />
               </div>
 

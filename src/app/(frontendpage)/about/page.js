@@ -5,8 +5,7 @@ import { SiTrustpilot } from "react-icons/si";
 import Counter from "./Counter";
 
 async function getAboutData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/about/aboutsec`, {
     cache: "no-store",
@@ -16,8 +15,7 @@ async function getAboutData() {
 }
 
 async function getProductionData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/about/production`, {
     cache: "no-store",
@@ -27,8 +25,7 @@ async function getProductionData() {
 }
 
 async function getWhatwedoData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/about/whatwedo`, {
     cache: "no-store",
@@ -38,8 +35,7 @@ async function getWhatwedoData() {
 }
 
 async function getManufactureData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/about/manufacture`, {
     cache: "no-store",
@@ -49,8 +45,7 @@ async function getManufactureData() {
 }
 
 async function getCoreValueData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/about/corevalue`, {
     cache: "no-store",
@@ -77,10 +72,9 @@ export default async function About() {
 
   return (
     <div>
-
-      <div className="container-fluid about-bg">
+      <div className="container-fluid about-bg min-h-screen">
         <div className="container ">
-          <div className="about-para">
+          <div className="about-para min-h-screen">
             {allaboutdata
               .filter((user) => user._id === "69b0fa51b48ff26914dc56a7")
               .map((data) => (
@@ -235,7 +229,7 @@ export default async function About() {
       </div>
 
       <div className="div-spread">
-        <div className="container-fluid px-5">
+        <div className="container-fluid px-4 md:px-5 ">
           {allwhatwodedata.slice(0, 1).map((data) => (
             <h1 key={data._id} className="lg:!mx-7">
               {data.heading}
@@ -250,7 +244,7 @@ export default async function About() {
                 data-aos="fade-up"
                 data-aos-delay={200}
               >
-                <div className="h-100 bg-[#F4F3F8] hover:bg-[#c20016] hover:text-white transition-all duration-0.5s  pt-5 pb-3 px-2 m-2 rounded-3xl relative">
+                <div className="h-100 bg-[#F4F3F8] hover:bg-[#c20016] active:bg-[#c20016] hover:text-white active:text-white transition-all duration-0.5s  pt-5 pb-3 px-2 m-2 rounded-3xl relative">
                   <div className="absolute -top-5 -left-5  bg-white rounded-b-4xl">
                     <Image
                       src="/img/fire.svg"
@@ -426,4 +420,3 @@ export default async function About() {
     </div>
   );
 }
-

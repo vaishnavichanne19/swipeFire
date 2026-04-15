@@ -74,7 +74,7 @@ export default function UserInfoCard() {
                           alt=" grid"
                           className="w-full border border-gray-200 rounded-xl dark:border-gray-800"
                           fill
-                          objectFit="cover"
+                          objectFit="contain"
                         />
                       </div>
                     </div>

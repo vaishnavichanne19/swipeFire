@@ -9,8 +9,6 @@ import { PiPhoneCallFill } from "react-icons/pi";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 const Contact = () => {
   const [selectedBranch, setSelectedBranch] = useState(0);
   const [direction, setDirection] = useState("forward");
@@ -35,13 +33,13 @@ const Contact = () => {
         console.log(error);
       }
     };
-    
+
     fetchData();
   }, []);
-  
+
   const branches = fetchAllData.slice(2);
-  
-  // form api 
+
+  // form api
   const [AddData, setAddData] = useState({
     name: "",
     lastname: "",
@@ -55,63 +53,62 @@ const Contact = () => {
       toast.error("Email is required");
       return false;
     }
-  
+
     if (!/^\S+@\S+\.\S+$/.test(AddData.email)) {
       toast.error("Invalid email format");
       return false;
     }
-  
+
     if (!AddData.name) {
       toast.error("First name is required");
       return false;
     }
-  
+
     if (!AddData.lastname) {
       toast.error("Last name is required");
       return false;
     }
-  
+
     if (!AddData.phone) {
       toast.error("Phone number is required");
       return false;
     }
-  
+
     if (!/^[0-9]{10}$/.test(AddData.phone)) {
       toast.error("Enter valid 10 digit phone number");
       return false;
     }
-  
+
     if (!AddData.message) {
       toast.error("Message is required");
       return false;
     }
-  
+
     return true;
   };
-  
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  if (!validate()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const res = await axios.post(`/api/contact/contactform`, AddData);
+    if (!validate()) return;
 
-    if (res.data.success) {
-      toast.success("Message Added Successfully");
-      setAddData({
-        name: "",
-        lastname: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+    try {
+      const res = await axios.post(`/api/contact/contactform`, AddData);
+
+      if (res.data.success) {
+        toast.success("Message Added Successfully");
+        setAddData({
+          name: "",
+          lastname: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
     }
-  } catch (error) {
-    toast.error("Something went wrong");
-  }
-};
-
+  };
 
   return (
     <main>
@@ -154,7 +151,9 @@ const handleSubmit = async (e) => {
                       type="email"
                       name="email"
                       value={AddData.email}
-                      onChange={(e) => setAddData({ ...AddData, email: e.target.value })}
+                      onChange={(e) =>
+                        setAddData({ ...AddData, email: e.target.value })
+                      }
                       required
                       className=" rounded-xl my-2 w-full p-2.5 outline-2 outline-white text-white !text-xl font-medium"
                     />
@@ -168,7 +167,9 @@ const handleSubmit = async (e) => {
                         type="text"
                         name="name"
                         value={AddData.name}
-                        onChange={(e) => setAddData({ ...AddData, name: e.target.value })}
+                        onChange={(e) =>
+                          setAddData({ ...AddData, name: e.target.value })
+                        }
                         required
                         className=" rounded-xl my-2 w-full p-2.5 outline-2 outline-white text-white !text-xl font-medium"
                       />
@@ -181,7 +182,9 @@ const handleSubmit = async (e) => {
                         type="text"
                         name="lastname"
                         value={AddData.lastname}
-                        onChange={(e) => setAddData({ ...AddData, lastname: e.target.value })}
+                        onChange={(e) =>
+                          setAddData({ ...AddData, lastname: e.target.value })
+                        }
                         required
                         className=" rounded-xl my-2 w-full p-2.5 outline-2 outline-white text-white !text-xl font-medium"
                       />
@@ -195,7 +198,9 @@ const handleSubmit = async (e) => {
                       type="tel"
                       name="phone"
                       value={AddData.phone}
-                      onChange={(e) => setAddData({ ...AddData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setAddData({ ...AddData, phone: e.target.value })
+                      }
                       required
                       className=" rounded-xl my-2 w-full p-2.5 outline-2 outline-white text-white !text-xl font-medium"
                     />
@@ -208,14 +213,18 @@ const handleSubmit = async (e) => {
                       type="text"
                       name="message"
                       value={AddData.message}
-                      onChange={(e) => setAddData({ ...AddData, message: e.target.value })}
+                      onChange={(e) =>
+                        setAddData({ ...AddData, message: e.target.value })
+                      }
                       required
                       rows={5}
                       className=" rounded-xl my-2 w-full p-2.5 outline-2 outline-white text-white !text-xl font-medium"
                     />
                   </div>
                   <div className="button-white-bg text-right">
-                    <button type="submit" className="!text-xl font-bold">Submit</button>
+                    <button type="submit" className="!text-xl font-bold">
+                      Submit
+                    </button>
                   </div>
                 </form>
               </div>
@@ -249,7 +258,9 @@ const handleSubmit = async (e) => {
                     </div>
                     <div>
                       <h5>
-                        <b>{branch.branchname}</b>
+                        <b className="w-[100px] md:w-full break-all">
+                          {branch.branchname}
+                        </b>
                       </h5>
                     </div>
                   </div>

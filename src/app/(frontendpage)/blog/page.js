@@ -70,7 +70,7 @@ const Blog = () => {
   };
   return (
     <main>
-      <div className="blog-sec container-fluid bg-[#F6F3EC] relative  px-0 lg:!px-5 div-spread">
+      <div className="blog-sec min-h-screen container-fluid bg-[#F6F3EC] relative  px-0 lg:!px-5 div-spread">
         <div className="blog-banner-wrapper">
           <div className="blog-scroll">
             <Image

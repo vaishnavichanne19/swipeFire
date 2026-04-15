@@ -40,14 +40,19 @@ export default function BlogDetail() {
           <h1 className="text-center">{ViewData.heading}</h1>
           {ViewData.blogimg && (
             <div className="relative h-120 my-5">
-              <Image src={ViewData.blogimg} alt="Blog" fill objectFit="contain" />
+              <Image
+                src={ViewData.blogimg}
+                alt="Blog"
+                fill
+                objectFit="contain"
+              />
             </div>
           )}
           <div dangerouslySetInnerHTML={{ __html: ViewData.description }}></div>
         </div>
 
         <div
-          className="product-detail-table [&_b]:font-bold [&_b]:!text-[#000000] [&_ul]:!list-disc [&_ul]:!text-[#424242] [&_ol]:!list-decimal [&_ol]:!text-[#000000]"
+          className="product-detail-table  overflow-x-auto [&_b]:font-bold [&_b]:!text-[#000000] [&_ul]:!list-disc [&_ul]:!text-[#424242] [&_ol]:!list-decimal [&_ol]:!text-[#000000]"
           dangerouslySetInnerHTML={{ __html: ViewData.blogdetail }}
         ></div>
       </div>

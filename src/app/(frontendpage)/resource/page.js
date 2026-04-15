@@ -36,7 +36,7 @@ const Resource = () => {
         {fetchAllData.slice(0, 1).map((data) => (
           <section
             key={data._id}
-            className="relative h-[565px] flex items-center justify-center text-center text-white overflow-hidden"
+            className="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
           >
             <Image
               src="/img/contact-bg.webp"

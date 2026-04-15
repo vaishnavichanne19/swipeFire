@@ -17,7 +17,15 @@ import {
   TableIcon,
   UserCircleIcon,
 } from "../icons/index";
-import { AppWindow, Cog, Contact, FireExtinguisher, House, List, SearchCheck } from "lucide-react";
+import {
+  AppWindow,
+  Cog,
+  Contact,
+  FireExtinguisher,
+  House,
+  List,
+  SearchCheck,
+} from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -56,7 +64,7 @@ const navItems: NavItem[] = [
         path: "/dashboard/homepages/salepartner",
         pro: false,
       },
-        {
+      {
         name: "Product Section",
         path: "/dashboard/homepages/homeproduct",
         pro: false,
@@ -81,7 +89,7 @@ const navItems: NavItem[] = [
         path: "/dashboard/homepages/client",
         pro: false,
       },
-       {
+      {
         name: "Testimonial Section",
         path: "/dashboard/homepages/testimonial",
         pro: false,
@@ -118,7 +126,11 @@ const navItems: NavItem[] = [
     name: "Products",
     icon: <FireExtinguisher />,
     subItems: [
-      { name: "Product Data", path: "/dashboard/product/productdata", pro: false },
+      {
+        name: "Product Data",
+        path: "/dashboard/product/productdata",
+        pro: false,
+      },
       {
         name: "Product List",
         path: "/dashboard/product/productlist",
@@ -167,19 +179,14 @@ const navItems: NavItem[] = [
   },
 ];
 
-const othersItems: NavItem[] = [
- 
-];
+const othersItems: NavItem[] = [];
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered, setIsMobileOpen } =
     useSidebar();
   const pathname = usePathname();
 
-  const renderMenuItems = (
-    navItems: NavItem[],
-    menuType: "main",
-  ) => (
+  const renderMenuItems = (navItems: NavItem[], menuType: "main") => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
         <li key={nav.name}>

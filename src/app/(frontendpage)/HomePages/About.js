@@ -17,7 +17,7 @@ export default async function About() {
   const alldata = res.data;
 
   return (
-    <div className="container bg-[#CCA47F] relative pt-0 lg:!pt-5">
+    <div className="container  bg-[#CCA47F] relative pt-0 lg:!pt-5">
       {alldata.map((data) => (
         <div key={data._id} className="div-spread row">
           <div className="col-lg-6 col-md-6 col-sm-12 ">

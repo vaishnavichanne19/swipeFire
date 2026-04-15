@@ -71,20 +71,22 @@ const Update = () => {
                     />
                   </div>
 
-                  <div className="col-span-2 lg:col-span-1">
-                    <Label>Suffix</Label>
-                    <Input
-                      type="text"
-                      id="suffix"
-                      value={equipmentData.suffix}
-                      onChange={(e) =>
-                        setequipmentData({
-                          ...equipmentData,
-                          suffix: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
+                  {equipmentData.suffix && (
+                    <div className="col-span-2 lg:col-span-1">
+                      <Label>Suffix</Label>
+                      <Input
+                        type="text"
+                        id="suffix"
+                        value={equipmentData.suffix}
+                        onChange={(e) =>
+                          setequipmentData({
+                            ...equipmentData,
+                            suffix: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                  )}
 
                   <div className="col-span-2 lg:col-span-1">
                     <Label>Description</Label>

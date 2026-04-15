@@ -4,11 +4,11 @@ import { GiStarsStack } from "react-icons/gi";
 import { GrCertificate } from "react-icons/gr";
 import { MdOutlineRealEstateAgent } from "react-icons/md";
 import { PiFireExtinguisherBold } from "react-icons/pi";
+import { LuLayoutGrid } from "react-icons/lu";
 import Counter from "../about/Counter";
 
 async function getEquipmentData() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const res = await fetch(`${baseUrl}/api/home/equipment`, {
     cache: "no-store",
@@ -25,6 +25,8 @@ const icons = [
   { icon: <GrCertificate color="#c20016" size={45} /> },
   { icon: <Globe color="#c20016" size={45} /> },
 ];
+
+const DefaultIcon = () => <LuLayoutGrid color="#c20016" size={45} />;
 
 export default async function Equipment() {
   const res = await getEquipmentData();
@@ -51,7 +53,7 @@ export default async function Equipment() {
               
               justify-center items-center py-2 lg:!py-4"
               >
-                <div>{icons[index]?.icon}</div>
+                <div>{icons[index]?.icon || <DefaultIcon />}</div>
                 <div className="text-center">
                   <strong className="text-2xl lg:!text-4xl">
                     <Counter

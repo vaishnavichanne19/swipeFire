@@ -381,12 +381,12 @@ const ApplicationDetail = () => {
           style={{
             backgroundImage: `url(${ViewData.applicationimage})`,
             backgroundRepeat: "no-repeat",
-            height: "600px",
+            
             width: "100%",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          className="flex justify-center items-center"
+          className="flex justify-center items-center min-h-screen"
         >
           <div className="container flex justify-center">
             <div

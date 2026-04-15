@@ -34,7 +34,7 @@ const AddData = () => {
     e.preventDefault();
 
     const formData = new FormData();
-   formData.append("sellproductlist", JSON.stringify(AddData.sellproductlist));
+    formData.append("sellproductlist", JSON.stringify(AddData.sellproductlist));
 
     try {
       const res = await axios.post("/api/product/sellprodlist", formData);
@@ -85,7 +85,9 @@ const AddData = () => {
                                 ...prev,
                                 sellproductlist: e.target.checked
                                   ? [...prev.sellproductlist, value]
-                                  : prev.sellproductlist.filter((id) => id !== value),
+                                  : prev.sellproductlist.filter(
+                                      (id) => id !== value,
+                                    ),
                               }));
                             }}
                           />
