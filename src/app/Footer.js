@@ -184,7 +184,7 @@ export default async function Footer() {
       <div className="whatsapp-float">
         <a
           className="text-white"
-          href="https://api.whatsapp.com/send?phone=918047517195&text=Hello!%20I%20need%20some%20help."
+          href="https://api.whatsapp.com/send?phone=919956777734&text=Hello!%20I%20need%20some%20help."
           target="_blank"
           rel="noopener noreferrer"
         >
