@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Link from "next/link";
-import { Instagram, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 async function getCertificateData() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -49,7 +49,7 @@ export default async function Footer() {
                     </span>
                   </p>
                 </div>
-                <div className="flex justify-center lg:!justify-start my-3">
+                <div className="flex justify-center items-center gap-3 lg:!justify-start my-3">
                   <div className="bg-white p-2 w-12 h-12 rounded-full flex justify-center  items-center">
                     <a
                       href="https://www.instagram.com/popular/swipe-fire-solutions-pvt-ltd/"
@@ -58,7 +58,16 @@ export default async function Footer() {
                       <Instagram color="#D42427" size={30} />
                     </a>
                   </div>
+                  <div className="bg-white p-2 w-12 h-12 rounded-full flex justify-center  items-center">
+                    <a
+                      href="https://www.facebook.com/swipefiresolutions/"
+                      target="_blank"
+                    >
+                      <Facebook color="#D42427" size={30} />
+                    </a>
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -184,7 +193,7 @@ export default async function Footer() {
       <div className="whatsapp-float">
         <a
           className="text-white"
-          href="https://api.whatsapp.com/send?phone=919956777734&text=Hello!%20I%20need%20some%20help."
+          href="https://api.whatsapp.com/send?phone=919987579688&text=Hello!%20I%20need%20some%20help."
           target="_blank"
           rel="noopener noreferrer"
         >
