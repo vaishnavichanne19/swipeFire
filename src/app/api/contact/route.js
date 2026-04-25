@@ -15,8 +15,8 @@ export  async function POST(req) {
     // description,
     branchname,
     branchaddress,
-    branchphone,
-    branchemail
+    // branchphone,
+    // branchemail
   })
 
 await datas.save();

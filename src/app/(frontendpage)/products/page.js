@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 import axios from "axios";
+import QualityPolicyPage from "../NewPages/QualityPolicy";
 
 const Products = () => {
   const [category, setCategory] = useState("All");
@@ -420,6 +421,11 @@ const Products = () => {
           </div>
         </div>
       </div>
+
+
+
+<QualityPolicyPage/>
+
       <div className="container-fluid bg-[#C20016] p-1 lg:!p-5 -mb-15">
         <div className="container mb-26 mt-10 text-center">
           <div>

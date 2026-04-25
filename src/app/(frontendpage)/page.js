@@ -10,6 +10,7 @@ import Testimonial from "../(frontendpage)/HomePages/Testimonial.js";
 import Equipment from "../(frontendpage)/HomePages/Equipment.js";
 import Client from "../(frontendpage)/HomePages/Client.js";
 import SalesPartner from "./HomePages/SalePartner.js";
+import CompanyInfoForm from "./NewPages/CompanyInfoform.js";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <ChooseUs />
       <Application />
       <Client />
+      <CompanyInfoForm />
       <Testimonial />
       <Certificate />
     </>

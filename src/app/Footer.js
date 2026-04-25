@@ -1,7 +1,14 @@
 import Image from "next/image";
 
 import Link from "next/link";
-import { Facebook, Instagram, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 
 async function getCertificateData() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -67,7 +74,6 @@ export default async function Footer() {
                     </a>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -193,7 +199,7 @@ export default async function Footer() {
       <div className="whatsapp-float">
         <a
           className="text-white"
-          href="https://api.whatsapp.com/send?phone=919987579688&text=Hello!%20I%20need%20some%20help."
+          href="https://wa.me/919987579688?text=Hello!%20I%20need%20some%20help."
           target="_blank"
           rel="noopener noreferrer"
         >

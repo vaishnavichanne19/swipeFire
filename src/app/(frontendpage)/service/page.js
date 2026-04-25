@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Chromium,
   Fuel,
   MessageSquare,
   PhoneCall,
@@ -15,6 +14,9 @@ import { TbFireHydrant } from "react-icons/tb";
 import { LuAlarmSmoke, LuLayoutGrid } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SafetyServices from "../NewPages/SafetyService";
+import Amc from "../NewPages/Amc";
+import FireDetectionPage from "../NewPages/FireDetection";
 
 const Service = () => {
   useEffect(() => {
@@ -248,6 +250,10 @@ const Service = () => {
         </div>
       </div>
 
+
+<SafetyServices/>
+  <FireDetectionPage/>
+
       {serviceData
         .filter((user) => user._id === "69b14e59b472d437ba2f5f00")
         .map((data) => (
@@ -277,6 +283,10 @@ const Service = () => {
             </div>
           </div>
         ))}
+
+
+
+
 
       <div className="container-fluid bg-[#C20016] p-1 lg:!p-5 div-spread">
         <div className="container mb-26 mt-10 text-center">
@@ -395,6 +405,10 @@ const Service = () => {
           </div>
         </div>
       </div>
+
+
+<Amc/>
+
     </main>
   );
 };

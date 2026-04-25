@@ -20,8 +20,8 @@ const Update = () => {
     subheading: "string",
     branchname: "string",
     branchaddress: "string",
-    branchphone: "string",
-    branchemail: "string",
+    // branchphone: "string",
+    // branchemail: "string",
   });
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const Update = () => {
                       />
                     </div>
                   )}
-             
+
                   {UpdateData.description && (
                     <div className="col-span-2 lg:col-span-1">
                       <Label>Description</Label>
@@ -108,22 +108,24 @@ const Update = () => {
                     </div>
                   )}
 
-                  {UpdateData.branchaddress && (
+                  {UpdateData.branchaddress !== undefined && (
                     <div className="col-span-2 lg:col-span-1">
-                      <Label>Branch Address</Label>
-                      <CKEditorClient
+                      <Label>Branch Address (Google Maps Iframe)</Label>
+                      <textarea
+                        rows={5}
+                        className="w-full border border-gray-300 rounded-lg p-2 text-sm"
                         value={UpdateData.branchaddress}
-                        onChange={(data) =>
-                          setUpdateData((prev) => ({
-                            ...prev,
-                            branchaddress: data,
-                          }))
+                        onChange={(e) =>
+                          setUpdateData({
+                            ...UpdateData,
+                            branchaddress: e.target.value,
+                          })
                         }
                       />
                     </div>
                   )}
 
-                  {UpdateData.branchphone && (
+                  {/* {UpdateData.branchphone && (
                     <div className="col-span-2 lg:col-span-1">
                       <Label>Branch Number</Label>
                       <Input
@@ -156,7 +158,7 @@ const Update = () => {
                         }
                       />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>

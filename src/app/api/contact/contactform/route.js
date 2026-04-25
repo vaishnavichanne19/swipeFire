@@ -7,14 +7,15 @@ export  async function POST(req) {
   await connectDB();
 
   try {
-  const {name, lastname, email, phone, message} = await req.json();
+  const {name, lastname, email, phone, message, branch} = await req.json();
 
   const datas = new ContactFormData({
    name,
-   lastname,
-   email,
+  //  lastname,
+  //  email,
    phone,
-   message
+  //  message
+  branch
   })
 
 await datas.save();

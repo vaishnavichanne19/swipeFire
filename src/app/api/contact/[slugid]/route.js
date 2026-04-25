@@ -31,8 +31,8 @@ export async function PUT(req, { params }) {
       description,
       branchname,
       branchaddress,
-      branchphone,
-      branchemail,
+      // branchphone,
+      // branchemail,
     } = await req.json();
 
     const updatedPayload = {
@@ -41,8 +41,8 @@ export async function PUT(req, { params }) {
       description,
       branchname,
       branchaddress,
-      branchphone,
-      branchemail,
+      // branchphone,
+      // branchemail,
     };
 
     const existid = await ContactData.findById(slugid);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Lock, PhoneCall } from "lucide-react";
 import { SiTrustpilot } from "react-icons/si";
 import Counter from "./Counter";
+import CompanyInfoPage from "../NewPages/CompanyInformation";
 
 async function getAboutData() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -128,6 +129,9 @@ export default async function About() {
             </div>
           ))}
       </div>
+
+
+      <CompanyInfoPage/>
 
       <div className="container">
         {allproductiondata.slice(0, 1).map((data) => (

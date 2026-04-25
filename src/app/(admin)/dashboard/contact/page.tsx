@@ -15,8 +15,8 @@ interface Data {
   subheading: string;
   branchname: string;
   branchaddress: string;
-  branchphone: string;
-  branchemail: string;
+  // branchphone: string;
+  // branchemail: string;
 }
 
 export default function UserInfoCard() {
@@ -189,11 +189,11 @@ export default function UserInfoCard() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {fetchAllData.slice(2).map((data) => (
           <div
             key={data._id}
-            className="bg-white p-5  border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
+            className="bg-white   w-100 overflow-hidden border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
           >
             <div className="flex flex-col-reverse gap-6  lg:flex-row lg:items-start lg:justify-between">
               <div>
@@ -206,19 +206,19 @@ export default function UserInfoCard() {
                       {data.branchname}
                     </p>
                   </div>
-
                   <div>
                     <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                       Branch Address
                     </p>
                     <p
-                      className="text-sm font-medium text-gray-800 dark:text-white/90"
+                      className="text-sm [&_iframe]:w-90 ![&_iframe]:w-90 font-medium text-gray-800 dark:text-white/90"
                       dangerouslySetInnerHTML={{
                         __html: data.branchaddress,
                       }}
                     ></p>
                   </div>
 
+                  {/* 
                   <div>
                     <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
                       Branch Phone
@@ -241,7 +241,7 @@ export default function UserInfoCard() {
                         __html: data.branchemail,
                       }}
                     ></p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

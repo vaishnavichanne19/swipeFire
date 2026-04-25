@@ -6,16 +6,20 @@ const ContactSchema = new mongoose.Schema({
     description: String,
     branchname: String,
     branchaddress: String,
-    branchphone: String,
-    branchemail: String,
+    // branchphone: String,
+    // branchemail: String,
 })
 
 const ContactFormSchema = new mongoose.Schema({
     name: String,
-    lastname: String,
-    email: String,
+    // lastname: String,
+    // email: String,
     phone: String,
-    message: String,
+    // message: String,
+    branch: String,
 })
+
+
+
 export const ContactData = mongoose.models.Contact || mongoose.model("Contact", ContactSchema);
 export const ContactFormData = mongoose.models.ContactForm || mongoose.model("ContactForm", ContactFormSchema);

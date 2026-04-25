@@ -14,10 +14,10 @@ const AddData = () => {
   const router = useRouter();
 
   const [AddData, setAddData] = useState({
-      branchname: "",
-      branchaddress: "",
-      branchphone: "",
-      branchemail: "",
+    branchname: "",
+    branchaddress: "",
+    // branchphone: "",
+    // branchemail: "",
   });
 
   const handleSubmit = async (e) => {
@@ -26,9 +26,9 @@ const AddData = () => {
     try {
       const res = await axios.post(`/api/contact`, AddData);
       if (res.data.success) {
-      toast.success("Data Added Successfully");
-      router.push("/dashboard/contact");
-    }
+        toast.success("Data Added Successfully");
+        router.push("/dashboard/contact");
+      }
     } catch (error) {
       toast.error("Update Failed");
     }
@@ -63,19 +63,22 @@ const AddData = () => {
                   </div>
 
                   <div className="col-span-2 lg:col-span-1">
-                    <Label>Branch Address</Label>
-                    <CKEditorClient
+                    <Label>Branch Address (Google Maps Iframe)</Label>
+                    <textarea
+                      rows={5}
+                      className="w-full border border-gray-300 rounded-lg p-2 text-sm"
+                      placeholder='<iframe src="https://www.google.com/maps/embed?..." width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>'
                       value={AddData.branchaddress}
-                      onChange={(data) =>
-                        setAddData((prev) => ({
-                          ...prev,
-                          branchaddress: data,
-                        }))
+                      onChange={(e) =>
+                        setAddData({
+                          ...AddData,
+                          branchaddress: e.target.value,
+                        })
                       }
                     />
                   </div>
 
-                  <div className="col-span-2 lg:col-span-1">
+                  {/* <div className="col-span-2 lg:col-span-1">
                     <Label>Branch Phone</Label>
                     <Input
                       type="tel"
@@ -89,9 +92,9 @@ const AddData = () => {
                         })
                       }
                     />
-                  </div>
+                  </div> */}
 
-                  <div className="col-span-2 lg:col-span-1">
+                  {/* <div className="col-span-2 lg:col-span-1">
                     <Label>Branch Email</Label>
                     <Input
                       type="email"
@@ -104,7 +107,7 @@ const AddData = () => {
                         })
                       }
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

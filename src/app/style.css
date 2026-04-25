@@ -1638,6 +1638,11 @@ a {
   animation: fillText 3s infinite;
   animation-delay: 2s;
 }
+.contact-branches-sec select option {
+  background-color: var(--bgcolor);
+  color: var(--pararedfont);
+}
+
 
 /* Keyframes */
 @keyframes fillText {
@@ -1667,18 +1672,19 @@ a {
   z-index: 1;
   position: relative;
   background-color: var(--bgcolor);
+  height: 100%;
 }
-.branch_info h5 b {
+.branch_info h5 b, .branch_info h5 b a{
   color: var(--pararedfont);
 }
 
 .branch_info .contact-circle {
   background: var(--bgcolor);
-  width: 130px;
-  height: 130px;
+  width: 90px;
+  height: 90px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  border: 10px solid var(--pararedfont);
+  border: 6px solid var(--pararedfont);
   position: relative;
   transition: 0.3s;
 }
@@ -1695,12 +1701,12 @@ a {
   background-color: var(--pararedfont);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.branch_info.active_branch h5 b {
+.branch_info.active_branch h5 b{
   color: var(--parawhitefont) !important;
 }
 .branch_info.active_branch .contact-circle {
   background: var(--pararedfont);
-  border: 10px solid var(--parawhitefont);
+  border: 6px solid var(--parawhitefont);
 }
 
 .branch_info.active_branch .contact-icon svg {

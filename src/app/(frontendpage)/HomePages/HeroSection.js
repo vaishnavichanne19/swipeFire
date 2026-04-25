@@ -14,6 +14,7 @@ export default async function HeroSection() {
   const alldata = res.data;
 
   return (
+    <>
     <main className="container-fluid hero-section min-h-screen">
       <div className="container hero-container min-h-screen relative ">
         <div className="des1" data-aos="fade-right" data-aos-duration={1500}>
@@ -58,5 +59,30 @@ export default async function HeroSection() {
         </div>
       </div>
     </main>
+
+
+    {/* <section className="div-spread ">
+  <div className="container  text-center">
+    
+    <h2 className="mb-6">
+      Authorized Licensing Agency
+    </h2>
+
+    <p className="max-w-2xl mx-auto mb-8">
+      Authorized Class A Licensing Agency from Maharashtra Fire Services.
+    </p>
+
+<div>
+    <Image
+      src="/img/contact-bg.webp"
+      alt="certificate"
+      width={100}
+      height={100}
+      className="mx-auto rounded-lg shadow-lg"
+    />
+</div>
+  </div>
+</section> */}
+    </>
   );
 }

@@ -18,4 +18,11 @@ const ResourceSchema = new mongoose.Schema({
   },
 })
 
+const ResourceUserSchema = new mongoose.Schema({
+  username : String,
+  phone: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
 export const ResourceData = mongoose.models.Resource || mongoose.model("Resource", ResourceSchema);
+export const ResourceUserData =  mongoose.models.ResourceUser || mongoose.model("ResourceUser", ResourceUserSchema)
