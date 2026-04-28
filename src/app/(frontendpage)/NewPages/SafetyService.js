@@ -116,7 +116,9 @@ export default function SafetyServices() {
                     key={idx}
                     className="relative flex items-start py-1 gap-2  text-gray-400 !text-sm"
                   >
+                    <span className="w-5 h-5">
                     <ArrowRight className="text-[#c20016] " />
+                    </span>
                     {item}
                   </li>
                 ))}

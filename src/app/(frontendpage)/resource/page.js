@@ -231,16 +231,16 @@ const Resource = () => {
                 <div key={data._id} data-aos="fade-up">
                   <div className="relative h-100">
                     <div
-                      className={`bg-white border border-gray-200  rounded-lg shadow-md p-6 transition duration-300 
+                      className={`bg-white border border-gray-200  h-100 rounded-lg shadow-md p-6 transition duration-300 
                      ${!isLoggedIn ? "blur-xs pointer-events-none select-none" : "hover:shadow-xl"}`}
                     >
                       <div className="flex items-center gap-4 mb-4">
                         <FaFilePdf size={40} className="text-red-600" />
-                        <h3 className="font-semibold text-lg">
+                        <h3 className="font-semibold capitalize">
                           {data.heading}
                         </h3>
                       </div>
-                      <p className="text-gray-600 text-sm mb-4">
+                      <p className="text-gray-600 mb-4 ">
                         {data.description}
                       </p>
                       <a

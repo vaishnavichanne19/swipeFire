@@ -6,43 +6,43 @@ const machineryData = [
   {
     category: "Drilling & Rolling Machines",
     items: [
-      { name: "Working Machine 3000rpm Universal Make" },
       { name: "Chain Saw Cutter Machine" },
-      { name: "Plate Rolling Machine – Capacity 20mm thick x 2000mm Width, Make: Raja Machinery" },
+      { name: "Plate Rolling Machine – Capacity 20mm thick x 2000mm Width, Make- Raja Machinery" },
       { name: "Pillar Drill No. 25mm" },
       { name: "Pillar Drill No. 13mm" },
+      { name: "Magnetic Drill Machine 31mm KPT Make" },
+      { name: "Hand Drill Machine 13mm KPT" },
+      {name:  "Concrete Drill Machine 25mm"}
     ],
   },
   {
     category: "Welding Machines",
     items: [
-      { name: "Welding Rectifier 400Amp Odha Make" },
-      { name: "Working Machine 3000rpm – Universal Make" },
-      { name: "Working Machine 3000rpm – Crane Make" },
-      { name: "Working Machine 3000rpm – World Tech Make" },
+      { name: "Welding Rectifier 400Amp D&H Make" },
+      { name: "Welding Rectifier 400Amp – Universal Make" },
+      { name: "Welding Rectifier 400Amp – emco Make" },
+      { name: "Welding Rectifier 400Amp – Weld Tech Make" },
       { name: "TIG Welding Rectifier L&T Make" },
     ],
   },
   {
     category: "Hand Tools & Grinders",
     items: [
-      { name: "Hand Grinder – AKG, OTT, DeWalt" },
-      { name: "Hand Scanner 4\" Makit" },
-      { name: "Magnetic Drill Machine 35mm OTT Make" },
-      { name: "Hand Drill Machine 13mm OTT" },
+      { name: "Hand Grinder AG4, KPT, DeWalt" },
+      { name: "Hand Grinder AG7, KPT, DeWalt" },
+      { name: "Hand Scanner 7\" Hitachi" },
       { name: "Bench Grinder" },
     ],
   },
   {
     category: "Cutting & Lifting",
     items: [
-      { name: "Concrete Drill Machine 25mm" },
-      { name: "Chain Pulley Block 1MT" },
-      { name: "Chain Pulley Block 1.5MT" },
+      { name: "Chain Pulley Block 3MT" },
       { name: "Chain Pulley Block 5MT" },
+      { name: "Chain Pulley Block 1MT" },
       { name: "Argon Set" },
       { name: "Gas Cutting Set" },
-      { name: "Gas Cutting K/G" },
+      { name: "Pug Cutting M/c" },
     ],
   },
   {
@@ -50,26 +50,26 @@ const machineryData = [
     items: [
       { name: "Air Compressor 10 CFM" },
       { name: "Nylon Ropes 1\"" },
-      { name: "Manila Rope 5\"" },
+      { name: "Manila Rope 3/4\"" },
     ],
   },
   {
     category: "Hydraulic & Testing",
     items: [
-      { name: "Radial Drill 20mm 2 Motul Alfa Bed" },
-      { name: "Flexible Wrench 3HP" },
-      { name: "Hydraulic Testing Machine (Pump 60 Kg/cm²)" },
-      { name: "Hydraulic Testing Machine (Pump 250 Kg/cm²)" },
+      { name: "Radial Drill 50mm 1 Mtr.x1 Mtr Bed" },
+      { name: "Flexible Grinder 3HP" },
+      { name: "Hydraulic Testing Hand Pump 30 Kg/cm²" },
+      { name: "Hydraulic Testing Electrical Pump 70 Kg/cm²" },
     ],
   },
   {
     category: "Ovens & Misc Equipment",
     items: [
-      { name: "Electric Oven 2 KW ATT for Welding Electrode" },
-      { name: "Rope Clamp 1/2\", 1\"" },
-      { name: "Masher – Owens 30 Kg" },
-      { name: "Portable Testing Machine" },
-      { name: "Portable Grinder 2HP" },
+      { name: "Electric Oven 200WATT for Welding Electrode" },
+      { name: "Rope Cuppy  2/1,2" },
+      { name: "Mother Oven 50 Kg" },
+      { name: "Holiday Testing Machine" },
+      { name: "Flexible Grinder 3HP" },
     ],
   },
 ];
@@ -208,9 +208,9 @@ export default function MachineryListPage() {
                 {/* Category Header */}
                 <div className="bg-[#1a191d] px-6 py-4 flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-[#c20016] shrink-0" />
-                  <h4 className="!text-[#fefeff] tracking-wide uppercase">
+                  <h5 className="!text-[#fefeff] tracking-wide uppercase">
                     {cat.category}
-                  </h4>
+                  </h5>
                   <span className="ml-auto bg-[rgba(194,0,22,0.2)] text-[#ff5555] text-xs px-2.5 py-0.5 rounded-full font-medium">
                     {cat.items.length} items
                   </span>

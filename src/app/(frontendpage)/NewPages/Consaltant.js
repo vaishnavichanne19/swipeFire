@@ -52,10 +52,8 @@ export default function ConsultantPage() {
   return (
    
     <main className="div-spread">
-
-      {/* ── BODY ─────────────────────────────────────────────────── */}
-      <section className="bg-[#f4f4f4] px-8 py-14 md:px-16">
-        <div className="container">
+      <section className="bg-[#f4f4f4]  py-14">
+        <div className="container px-4">
 
           <h2 className="text-[#1a191d] font-extrabold text-2xl md:text-3xl mb-1">
             We as Consultant
@@ -101,7 +99,7 @@ NBC, which includes:
             </div>
 
             {/* additional notes */}
-            <ul className="space-y-2.5">
+            <ul className="space-y-2.5 !pl-0">
               {additionalNotes.map((note) => (
                 <li
                   key={note}
@@ -125,7 +123,7 @@ NBC, which includes:
                 </svg>
               </div>
               <div>
-                <h3 className="text-[#1a191d] font-bold text-xl leading-none">
+                <h3>
                   Compliance Documents
                 </h3>
                 <div className="w-8 h-[3px] bg-[#c20016] rounded mt-1.5" />
@@ -136,20 +134,20 @@ NBC, which includes:
               {complianceServices.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-[#1a191d] rounded-md px-5 py-5"
+                  className="bg-[#1a191d] rounded-md px-4 py-5"
                 >
-                  <p className="text-[#c20016] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <p className="!text-[#c20016]  uppercase mb-2">
                     {item.label}
                   </p>
-                  <p className="text-[rgb(134,134,134)] text-sm leading-relaxed">
+                  <p className="!text-[rgb(192,191,191)]">
                     {item.desc}
                   </p>
                   {item.points.length > 0 && (
-                    <ul className="mt-3 space-y-1">
+                    <ul className="mt-3 space-y-1 !pl-0">
                       {item.points.map((pt) => (
                         <li
                           key={pt}
-                          className="flex items-start gap-2 text-[rgb(134,134,134)] text-xs"
+                          className="flex items-start gap-2 text-[rgb(192,191,191)] text-xs"
                         >
                           <span className="text-[#c20016] mt-0.5">›</span>
                           {pt}

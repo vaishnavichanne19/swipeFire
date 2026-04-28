@@ -17,6 +17,7 @@ import axios from "axios";
 import SafetyServices from "../NewPages/SafetyService";
 import Amc from "../NewPages/Amc";
 import FireDetectionPage from "../NewPages/FireDetection";
+import SystemIntegrantPage from "../NewPages/SystemIntegrant";
 
 const Service = () => {
   useEffect(() => {
@@ -253,6 +254,7 @@ const Service = () => {
 
 <SafetyServices/>
   <FireDetectionPage/>
+  <SystemIntegrantPage/>
 
       {serviceData
         .filter((user) => user._id === "69b14e59b472d437ba2f5f00")
@@ -408,6 +410,7 @@ const Service = () => {
 
 
 <Amc/>
+
 
     </main>
   );

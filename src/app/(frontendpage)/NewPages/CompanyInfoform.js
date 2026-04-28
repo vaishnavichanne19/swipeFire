@@ -76,7 +76,7 @@ export default function CompanyInfoForm() {
     <main className=" py-5">
 
       {/* ── Form ── */}
-      <section className="max-w-3xl mx-auto px-6 pb-16">
+      <section className="max-w-3xl mx-auto px-3 lg:px-6 pb-16">
         <div className="bg-[#fafafa] border border-gray-100 rounded-2xl overflow-hidden">
 
           <div className="bg-[#1a191d] px-8 py-4 flex items-center gap-3">
@@ -207,10 +207,10 @@ export default function CompanyInfoForm() {
             </div>
 
             {/* Divider */}
-            <div className="border-t border-gray-100" />
+            <div className="border-t border-gray-200" />
 
             {/* Submit */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col-reverse sm:flex-row gap-3">
               <button
                 onClick={handleSubmit}
                 className="flex-1 bg-[#c20016] text-[#fefeff] font-bold text-sm py-3.5 rounded-full hover:opacity-90 active:scale-[0.98] transition-all duration-150"
@@ -224,10 +224,6 @@ export default function CompanyInfoForm() {
                 Clear Form
               </button>
             </div>
-
-            <p className="text-center text-xs text-[rgb(134,134,134)]">
-              <span className="text-[#c20016]">*</span> Required fields.
-            </p>
 
           </div>
         </div>

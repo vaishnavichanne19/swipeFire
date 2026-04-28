@@ -40,7 +40,7 @@ export default function CompanyInfoPage() {
                             key={i}
                             className="flex items-start gap-3"
                         >
-                            <svg className="w-4 h-4 text-[#c20016] mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+                            <svg className="w-5 h-5 text-[#c20016] mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                             <p>{pt.body}</p>

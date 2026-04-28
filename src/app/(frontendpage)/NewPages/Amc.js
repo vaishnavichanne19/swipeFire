@@ -9,17 +9,17 @@ export default function Amc () {
       Annual Maintenance Contract (AMC)
     </h1>
 
-    <div className="bg-white mt-5 shadow-xs rounded-2xl p-8 max-w-4xl mx-auto">
+    <div className="bg-white mt-5 shadow-xs rounded-2xl p-3 lg:p-8 max-w-4xl mx-auto">
       
-      <p className="text-gray-600 mb-6">
+      <p className="text-gray-600 mb-6 text-center lg:!text-left ">
         In our Annual Maintenance Contract, we will provide....
       </p>
 
       <ul className="space-y-4 text-gray-700">
-        <li className="flex gap-3 items-center"> <CircleCheckBig size={20} color="#c20016"/> Complete Health Checkup of the system. </li>
-        <li className="flex gap-3 items-center"> <CircleCheckBig size={20} color="#c20016"/> We will train a particular person for regular maintenance checkup.</li>
-        <li className="flex gap-3 items-center"> <CircleCheckBig size={20} color="#c20016"/> We will issue form "B" certificate in our annual maintenance contract.</li>
-        <li className="flex gap-3 items-center"> <CircleCheckBig size={20} color="#c20016"/> We also provide Comprehensive & Non-Comprehensive Contract. </li>
+        <li className="flex gap-3 items-center"><span className="w-5 h-5"> <CircleCheckBig size={20} color="#c20016"/> </span> Complete Health Checkup of the system. </li>
+        <li className="flex gap-3 items-center"> <span className="w-5 h-5"><CircleCheckBig size={20} color="#c20016"/> </span> We will train a particular person for regular maintenance checkup.</li>
+        <li className="flex gap-3 items-center"> <span className="w-5 h-5"><CircleCheckBig size={20} color="#c20016"/> </span> We will issue form "B" certificate in our annual maintenance contract.</li>
+        <li className="flex gap-3 items-center"> <span className="w-5 h-5"><CircleCheckBig size={20} color="#c20016"/> </span> We also provide Comprehensive & Non-Comprehensive Contract. </li>
       </ul>
 
       <div className="my-8 border-t border-gray-200"></div>

@@ -61,28 +61,7 @@ export default async function HeroSection() {
     </main>
 
 
-    {/* <section className="div-spread ">
-  <div className="container  text-center">
-    
-    <h2 className="mb-6">
-      Authorized Licensing Agency
-    </h2>
 
-    <p className="max-w-2xl mx-auto mb-8">
-      Authorized Class A Licensing Agency from Maharashtra Fire Services.
-    </p>
-
-<div>
-    <Image
-      src="/img/contact-bg.webp"
-      alt="certificate"
-      width={100}
-      height={100}
-      className="mx-auto rounded-lg shadow-lg"
-    />
-</div>
-  </div>
-</section> */}
     </>
   );
 }

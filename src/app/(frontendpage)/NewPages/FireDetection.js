@@ -42,8 +42,8 @@ export default function FireDetectionPage() {
 
         <div className="border-l-4 border-[#c20016] bg-[#fafafa] rounded-r-xl mt-4 px-6 py-4">
           <p className="text-[rgb(134,134,134)] text-sm leading-loose">
-            Fire detectionsystems are essential components of aresponsiblesafetymanagementconcept.
-            Each objectand each areaof useholdsspecial risksand requirements.Fireplan Systemsprovides the
+            Fire detection systems are essential components of responsible safety management concept.
+            Each object and each area of use holds special risks and requirements. Fire Plan Systems provides the
             optimum detection of fires. An automatic fire alarm system is designed to detect the unwanted
             presence of fire by monitoring environmental changes associated with combustion. In general, a
             fire alarm system is classified as either automatically actuated, manually actuated, or both.

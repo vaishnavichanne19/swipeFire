@@ -105,14 +105,14 @@ export default function QualityPolicyPage() {
                     {commitments.map((c, i) => (
                         <div
                             key={i}
-                            className="group flex items-start gap-5 bg-[#fafafa] border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c20016] hover:bg-[#fff5f5] transition-all duration-200"
+                            className="group flex items-start gap-4 bg-[#fafafa] border border-gray-100 rounded-2xl px-6 py-4 hover:border-[#c20016] hover:bg-[#fff5f5] transition-all duration-200"
                         >
                             <div className="shrink-0 w-9 h-9 rounded-full bg-[#1a191d] group-hover:bg-[#c20016] transition-colors flex items-center justify-center">
                                 <span className="text-[#fefeff] text-xs font-bold">
                                     {String(i + 1).padStart(2, "0")}
                                 </span>
                             </div>
-                            <div className="flex items-start gap-3 flex-1 pt-1">
+                            <div>
 
                                 <p className="leading-relaxed">{c.text}</p>
                             </div>
