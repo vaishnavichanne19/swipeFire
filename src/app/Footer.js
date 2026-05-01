@@ -59,7 +59,7 @@ export default async function Footer() {
                 <div className="flex justify-center items-center gap-3 lg:!justify-start my-3">
                   <div className="bg-white p-2 w-12 h-12 rounded-full flex justify-center  items-center">
                     <a
-                      href="https://www.instagram.com/swipe_fire_?igsh=NTc1bW0zejlmcTMz"
+                      href="https://www.instagram.com/swipefiresolutions/"
                       target="_blank"
                     >
                       <Instagram color="#D42427" size={30} />

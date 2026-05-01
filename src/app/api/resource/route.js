@@ -24,27 +24,91 @@ export async function POST(req) {
 
     /* ================= IMAGE (Certificates) ================= */
 
-    if (resourcetype === "Certificates") {
-      const image = formData.get("image");
+    // if (resourcetype === "Certificates") {
+    //   const image = formData.get("image");
 
-      if (image && image.name) {
-        const buffer = Buffer.from(await image.arrayBuffer());
+    //   if (image && image.name) {
+    //     const buffer = Buffer.from(await image.arrayBuffer());
 
-        const upload = await new Promise((resolve, reject) => {
-          cloudinary.uploader
-            .upload_stream(
-              { folder: "resources", resource_type: "image" },
-              (err, result) => {
-                if (err) reject(err);
-                else resolve(result);
-              }
-            )
-            .end(buffer);
-        });
+    //     const upload = await new Promise((resolve, reject) => {
+    //       cloudinary.uploader
+    //         .upload_stream(
+    //           { folder: "resources", resource_type: "image" },
+    //           (err, result) => {
+    //             if (err) reject(err);
+    //             else resolve(result);
+    //           }
+    //         )
+    //         .end(buffer);
+    //     });
 
-        datas.image = upload.secure_url;
-      }
+    //     datas.image = upload.secure_url;
+    //   }
+    // }
+
+
+if (resourcetype === "Certificates") {
+  const image = formData.get("image");
+  const pdf = formData.get("pdf");
+
+  const hasImage = image && image.size > 0;
+  const hasPdf = pdf && pdf.size > 0;
+
+  console.log("PDF:", pdf);
+  console.log("PDF size:", pdf?.size);
+
+  if (hasImage && hasPdf) {
+    return NextResponse.json(
+      { message: "Upload either Image OR PDF" },
+      { status: 400 }
+    );
+  }
+
+  if (!hasImage && !hasPdf) {
+    return NextResponse.json(
+      { message: "Please upload Image or PDF" },
+      { status: 400 }
+    );
+  }
+
+  /* IMAGE */
+  if (hasImage) {
+    const buffer = Buffer.from(await image.arrayBuffer());
+
+    const upload = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          { folder: "resources", resource_type: "image" },
+          (err, result) => {
+            if (err) reject(err);
+            else resolve(result);
+          }
+        )
+        .end(buffer);
+    });
+
+    datas.image = upload.secure_url;
+  }
+
+  /* PDF */
+  if (hasPdf) {
+    const bytes = await pdf.arrayBuffer();
+    const buffer = Buffer.from(bytes);
+
+    const uploadDir = path.join(process.cwd(), "public/uploads");
+
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
     }
+
+    const fileName = Date.now() + "-" + pdf.name;
+    const filePath = path.join(uploadDir, fileName);
+
+    fs.writeFileSync(filePath, buffer);
+
+    datas.pdf = `/uploads/${fileName}`;
+  }
+}
 
     /* ================= VIDEO ================= */
 

@@ -17,6 +17,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <MFSPage/>
       <Features />
       <About />
       <SalesPartner/>
@@ -28,7 +29,6 @@ export default function Home() {
       <Client />
       <CompanyInfoForm />
       <Testimonial />
-      <MFSPage/>
       <Certificate />
     </>
   );

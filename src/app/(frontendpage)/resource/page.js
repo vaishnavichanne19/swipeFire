@@ -46,8 +46,6 @@ const Resource = () => {
       ? fetchAllData
       : fetchAllData.filter((item) => item.resourcetype.includes(activeTab));
 
-
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -142,11 +140,9 @@ const Resource = () => {
       {isLoggedIn && (
         <div className="fixed  top-22 lg:!top-26 right-4 z-50 flex items-center gap-2 bg-white shadow-lg rounded-full px-4 py-2 border border-red-100">
           <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-          <span className="text-sm font-medium text-gray-700">
-            Logged In
-          </span>
+          <span className="text-sm font-medium text-gray-700">Logged In</span>
         </div>
-          )}
+      )}
       <div className="div-spread">
         {fetchAllData.slice(0, 1).map((data) => (
           <section
@@ -182,7 +178,6 @@ const Resource = () => {
         ))}
 
         <div className="div-spread  container mx-auto px-4 " id="resources">
-      
           <div className="flex justify-center gap-6 mb-12 flex-wrap">
             <button
               onClick={() => setActiveTab("PDF's")}
@@ -240,9 +235,7 @@ const Resource = () => {
                           {data.heading}
                         </h3>
                       </div>
-                      <p className="text-gray-600 mb-4 ">
-                        {data.description}
-                      </p>
+                      <p className="text-gray-600 mb-4 ">{data.description}</p>
                       <a
                         href={data.pdf}
                         target="_blank"
@@ -305,35 +298,53 @@ const Resource = () => {
               ))}
           </div>
 
-          {filteredData
-            .filter((item) => item.resourcetype.includes("Certificates"))
-            .map((data) => (
-              <div
-                key={data._id}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                data-aos="fade-up"
-              >
-                <div className="bg-white h-auto rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-center">
-                  <div className="resource-img">
-                    <Image
-                      src={data.image}
-                      alt={data.heading}
-                      width={500}
-                      height={500}
-                      className="rounded-lg mb-4"
-                    />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredData
+              .filter((item) => item.resourcetype.includes("Certificates"))
+              .map((data) => (
+                <div key={data._id} data-aos="fade-up">
+                  <div className="bg-white h-auto rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300 text-center">
+                    {data.image && (
+                      <div className="resource-img">
+                        <Image
+                          src={data.image}
+                          alt={data.heading}
+                          width={500}
+                          height={500}
+                          className="rounded-lg mb-4"
+                        />
+                      </div>
+                    )}
+
+                    {data.pdf && (
+                      <div>
+                        <iframe
+                          src={data.pdf}
+                          width="100%"
+                          height="360px"
+                          className="border rounded-lg mb-3"
+                        ></iframe>
+
+                        <a
+                          href={data.pdf}
+                          target="_blank"
+                          download
+                          className="inline-block bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800"
+                        >
+                          Download PDF
+                        </a>
+                      </div>
+                    )}
+                    <h5 className="mt-4">{data.heading}</h5>
                   </div>
-                  <h5>{data.heading}</h5>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
       </div>
 
-
-     
-       <ConsultantPage/>
-       <MachineryListPage/>
+      <ConsultantPage />
+      <MachineryListPage />
 
       <div className="container-fluid bg-[#C20016] p-1 lg:!p-5 -mb-15">
         <div className="container mb-26 mt-10 text-center">
@@ -559,9 +570,6 @@ const Resource = () => {
           </div>
         </div>
       )}
-
-
-     
     </main>
   );
 };

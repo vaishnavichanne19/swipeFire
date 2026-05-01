@@ -97,8 +97,9 @@ const AddData = () => {
     formData.append("description", AddData.description);
     formData.append("resourcetype", AddData.resourcetype);
 
-    if (AddData.resourcetype === "Certificates" && imageFile) {
-      formData.append("image", imageFile);
+    if (AddData.resourcetype === "Certificates") {
+      if (imageFile) formData.append("image", imageFile);
+      if (pdfFile) formData.append("pdf", pdfFile);
     }
 
     if (AddData.resourcetype === "PDF's" && pdfFile) {
@@ -185,7 +186,7 @@ const AddData = () => {
                     </div>
                   )}
 
-                  {AddData.resourcetype === "PDF's" && (
+                 {(AddData.resourcetype === "PDF's" || AddData.resourcetype === "Certificates") && (
                     <div className="col-span-2 lg:col-span-1">
                       <Label>Upload PDF</Label>
                       <Input
@@ -225,6 +226,8 @@ const AddData = () => {
                   )}
 
                   {AddData.resourcetype === "Certificates" && (
+                    <div>
+                      <h4 className="text-center">OR</h4>
                     <div className="col-span-2 lg:col-span-1">
                       <Label>Image</Label>
                       <Input
@@ -244,6 +247,7 @@ const AddData = () => {
                         />
                       )}
                     </div>
+                  </div>
                   )}
                 </div>
               </div>
