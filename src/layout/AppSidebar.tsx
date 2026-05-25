@@ -5,8 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
@@ -90,6 +88,11 @@ const navItems: NavItem[] = [
         pro: false,
       },
       {
+        name: "Company Information Form",
+        path: "/dashboard/homepages/compinfo",
+        pro: false,
+      },
+      {
         name: "Testimonial Section",
         path: "/dashboard/homepages/testimonial",
         pro: false,
@@ -111,6 +114,11 @@ const navItems: NavItem[] = [
     name: "About",
     subItems: [
       { name: "About Section", path: "/dashboard/about/aboutdata", pro: false },
+      {
+        name: "Company Information",
+        path: "/dashboard/about/compinfo",
+        pro: false,
+      },
       {
         name: "Production Facts",
         path: "/dashboard/about/production",
@@ -136,6 +144,11 @@ const navItems: NavItem[] = [
         path: "/dashboard/product/productlist",
         pro: false,
       },
+      {
+        name: "Quality Policy",
+        path: "/dashboard/product/qualitypolicy",
+        pro: false,
+      },
     ],
   },
   {
@@ -152,6 +165,26 @@ const navItems: NavItem[] = [
         path: "/dashboard/service/servicelist",
         pro: false,
       },
+      {
+        name: "Our Priority",
+        path: "/dashboard/service/ourpriority",
+        pro: false,
+      },
+      {
+        name: "Fire Detection System",
+        path: "/dashboard/service/firedetection",
+        pro: false,
+      },
+      {
+        name: "AMC",
+        path: "/dashboard/service/amc",
+        pro: false,
+      },
+      {
+        name: "System Integrant",
+        path: "/dashboard/service/systemint",
+        pro: false,
+      },
     ],
   },
   {
@@ -165,7 +198,19 @@ const navItems: NavItem[] = [
   {
     icon: <SearchCheck />,
     name: "Resource",
-    path: "/dashboard/resource",
+    subItems: [
+      { name: "Resource Data", path: "/dashboard/resource", pro: false },
+      {
+        name: "Consultant Data",
+        path: "/dashboard/resource/consultant",
+        pro: false,
+      },
+      {
+        name: "Machinery List",
+        path: "/dashboard/resource/machinery",
+        pro: false,
+      },
+    ],
   },
   {
     icon: <Contact />,

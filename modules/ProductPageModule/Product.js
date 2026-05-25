@@ -39,6 +39,12 @@ const BestSellingProductSchema = new mongoose.Schema({
     },
   ],
 });
+
+const QualityPolicySchema = new mongoose.Schema({
+  heading: String,
+  description: String,
+});
+
 export const ProductData =
   mongoose.models.Product || mongoose.model("Product", ProductSchema);
 export const ProductListData =
@@ -50,3 +56,6 @@ export const ProductTypeData =
 export const BestSellingProductData =
   mongoose.models.BestSellingProduct ||
   mongoose.model("BestSellingProduct", BestSellingProductSchema);
+export const QualityPolicyData =
+  mongoose.models.QualityPolicy ||
+  mongoose.model("QualityPolicy", QualityPolicySchema);

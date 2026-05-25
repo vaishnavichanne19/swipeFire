@@ -13,25 +13,26 @@ export default async function HeroSection() {
   const res = await getHeroSecData();
   const alldata = res.data;
 
+  const heroItem = alldata[0];
+
   return (
     <>
-    <main className="container-fluid hero-section min-h-screen">
-      <div className="container hero-container min-h-screen relative ">
-        <div className="des1" data-aos="fade-right" data-aos-duration={1500}>
-          <Image src="/img/Group 32.svg" alt="" width={100} height={100} />
-        </div>
-        <div className="des2" data-aos="fade-left" data-aos-duration={1500}>
-          <Image src="/img/OBJECTS.svg" alt="" width={100} height={100} />
-        </div>
-        {alldata.map((data) => (
+      <main className="container-fluid hero-section min-h-screen">
+        <div className="container hero-container min-h-screen relative ">
+          <div className="des1" data-aos="fade-right" data-aos-duration={1500}>
+            <Image src="/img/Group 32.svg" alt="" width={100} height={100} />
+          </div>
+          <div className="des2" data-aos="fade-left" data-aos-duration={1500}>
+            <Image src="/img/OBJECTS.svg" alt="" width={100} height={100} />
+          </div>
+
           <div
-            key={data._id}
             className="text-center py-5"
             data-aos="fade-up"
             data-aos-duration={1500}
           >
             <h1>
-              {data.heading.split(" ").map((word, index) => (
+              {heroItem.heading.split(" ").map((word, index) => (
                 <span
                   key={index}
                   className={index === 3 ? "text-[#D42427]" : ""}
@@ -43,25 +44,30 @@ export default async function HeroSection() {
 
             <div
               className="px-2.5 lg:!px-20 py-0 lg:!py-10 text-xl"
-              dangerouslySetInnerHTML={{ __html: data.description }}
+              dangerouslySetInnerHTML={{ __html: heroItem.description }}
             />
 
             <div className="red-full-border-button">
               <Link href="#home-products">Find Your Extinguisher</Link>
             </div>
           </div>
-        ))}
-        <div className="des3" data-aos="fade-up-right" data-aos-duration={1000}>
-          <Image src="/img/Group 33.svg" alt="" width={100} height={100} />
+
+          <div
+            className="des3"
+            data-aos="fade-up-right"
+            data-aos-duration={1000}
+          >
+            <Image src="/img/Group 33.svg" alt="" width={100} height={100} />
+          </div>
+          <div
+            className="des4"
+            data-aos="fade-up-right"
+            data-aos-duration={1000}
+          >
+            <Image src="/img/Group 34.svg" alt="" width={100} height={100} />
+          </div>
         </div>
-        <div className="des4" data-aos="fade-up-right" data-aos-duration={1000}>
-          <Image src="/img/Group 34.svg" alt="" width={100} height={100} />
-        </div>
-      </div>
-    </main>
-
-
-
+      </main>
     </>
   );
 }

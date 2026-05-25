@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import Link from "next/link";
@@ -9,20 +11,24 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-async function getCertificateData() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+export default function Footer() {
+  const [fetchAllData, setFetchAllData] = useState([]);
 
-  const res = await fetch(`${baseUrl}/api/home/certificate`, {
-    cache: "no-store",
-  });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/home/certificate");
+        setFetchAllData(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  return res.json();
-}
-
-export default async function Footer() {
-  const res = await getCertificateData();
-  const alldata = res.data;
+    fetchData();
+  }, []);
 
   return (
     <div className="container-fluid bg-[#000000] footer-section">
@@ -143,7 +149,7 @@ export default async function Footer() {
               </ul>
 
               <div className="bg-white flex flex-wrap gap-2 items-center hidden lg:flex px-2">
-                {alldata.slice(1).map((data) => (
+                {fetchAllData.slice(1).map((data) => (
                   <div key={data._id}>
                     <div className="w-12 h-12 relative">
                       {data.certificateimage && (
@@ -163,7 +169,7 @@ export default async function Footer() {
         </div>
 
         <div className="bg-white flex flex-wrap gap-2 items-center block lg:hidden">
-          {alldata.slice(1).map((data) => (
+          {fetchAllData.slice(1).map((data) => (
             <div key={data._id}>
               <div className="w-12 h-12 relative">
                 {data.certificateimage && (

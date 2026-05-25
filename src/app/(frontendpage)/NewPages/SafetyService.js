@@ -1,51 +1,50 @@
 "use client";
 
+import axios from "axios";
 import { ArrowRight, Star } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const services = [
-  {
-    id: 1,
-    title: "Designing",
-    items: [
-      "Firefighting & Detection System Designing",
-      "BOQ Designing",
-      "Technical Equipment Data",
-    ],
-  },
-  {
-    id: 2,
-    title: "Procurement of Compliance Documents",
 
-    items: ["Provisional Fire NOC & Final Fire NOC", "Issuances of Form A & B"],
-  },
-  {
-    id: 3,
-    title: "System Integration",
-    items: [
-      "Active Fire Protection System",
-      "Passive Fire Protection System",
-      "Fire Alarm System",
-    ],
-  },
-  {
-    id: 4,
 
-    title: "Training Programs",
+import parse, { domToReact } from "html-react-parser";
 
-    items: ["System Awareness", "System Maintenance", "Role Play"],
-  },
-  {
-    id: 5,
-    title: "We Provide AMC",
-    items: [
-      "It includes complete maintenance of system with documentation & Training Programs.",
-    ],
-  },
-];
+function RenderData({ html }) {
+  return (
+    <div className="space-y-2">
+      {parse(html, {
+        replace: (domNode) => {
+          if (domNode.name === "li") {
+            return (
+              <div className=" relative flex items-start py-1 gap-2  text-gray-400 !text-sm">
+                <span className="w-5 h-5">
+                  <ArrowRight className="text-[#c20016] " />
+                </span>
+                {domToReact(domNode.children)}
+              </div>
+            );
+          }
+        },
+      })}
+    </div>
+  );
+}
 
 export default function SafetyServices() {
   const [activeCard, setActiveCard] = useState(null);
+  const [fetchAllData, setFetchAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/service/ourpriority");
+        setFetchAllData(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
 
   return (
     <section className="bg-[#0a0a0a] relative overflow-hidden py-20">
@@ -61,27 +60,34 @@ export default function SafetyServices() {
       />
 
       <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        {fetchAllData.slice(0, 1).map((data) => (
+
+        <div key={data._id} style={{ textAlign: "center", marginBottom: "60px" }}>
           <p className="!text-[#c20016] flex items-center justify-center gap-2 ">
-            <Star /> Our Consultancy
+            <Star /> {data.title}
           </p>
           <h1 className="text-white">
-            SAFETY IS OUR <span className="text-[#c20016]">PRIORITY</span>
+            {data?.heading?.split(" ").map((word, idx) => (
+              <span
+                key={idx}
+                className={`${idx === data?.heading?.split(" ").length - 1 ? "text-[#c20016]" : "text-white"}`}
+              >
+                {" " + word}
+              </span>
+            ))}
           </h1>
-          <p>
-            We provide complete Fire Fighting & Safety Services from Designing
-            to Commissioning.
-          </p>
+          <p>{data.description}</p>
         </div>
+        ))}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
-          {services.map((service) => (
+          {fetchAllData.slice(1).map((service) => (
             <div
-              key={service.id}
-              onMouseEnter={() => setActiveCard(service.id)}
+              key={service._id}
+              onMouseEnter={() => setActiveCard(service._id)}
               onMouseLeave={() => setActiveCard(null)}
               className={`flex flex-col gap-3 border  h-full transition-all duration-500 p-5 rounded-xl
-             ${activeCard === service.id ? "bg-[#1a1a1a]" : "bg-[#111111]"} `}
+             ${activeCard === service._id ? "bg-[#1a1a1a]" : "bg-[#111111]"} `}
             >
               {/* Icon */}
               <div className="bg-red-100 p-2 text-[#c20016] w-10  h-10 rounded-lg">
@@ -103,26 +109,16 @@ export default function SafetyServices() {
 
               <h5
                 style={{
-                  color: activeCard === service.id ? "#e53e3e" : "#ffffff",
+                  color: activeCard === service._id ? "#e53e3e" : "#ffffff",
                 }}
               >
-                {service.title}
+                {service.heading}
               </h5>
 
               {/* Items */}
-              <ul className="m-0 p-0">
-                {service.items.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="relative flex items-start py-1 gap-2  text-gray-400 !text-sm"
-                  >
-                    <span className="w-5 h-5">
-                    <ArrowRight className="text-[#c20016] " />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="safety-service">
+                <RenderData html={service.description} />
+              </div>
             </div>
           ))}
         </div>

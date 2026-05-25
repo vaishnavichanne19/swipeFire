@@ -1,101 +1,89 @@
 "use client";
 
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import parse, { domToReact } from "html-react-parser";
 
-const machineryData = [
-  {
-    category: "Drilling & Rolling Machines",
-    items: [
-      { name: "Chain Saw Cutter Machine" },
-      { name: "Plate Rolling Machine – Capacity 20mm thick x 2000mm Width, Make- Raja Machinery" },
-      { name: "Pillar Drill No. 25mm" },
-      { name: "Pillar Drill No. 13mm" },
-      { name: "Magnetic Drill Machine 31mm KPT Make" },
-      { name: "Hand Drill Machine 13mm KPT" },
-      {name:  "Concrete Drill Machine 25mm"}
-    ],
-  },
-  {
-    category: "Welding Machines",
-    items: [
-      { name: "Welding Rectifier 400Amp D&H Make" },
-      { name: "Welding Rectifier 400Amp – Universal Make" },
-      { name: "Welding Rectifier 400Amp – emco Make" },
-      { name: "Welding Rectifier 400Amp – Weld Tech Make" },
-      { name: "TIG Welding Rectifier L&T Make" },
-    ],
-  },
-  {
-    category: "Hand Tools & Grinders",
-    items: [
-      { name: "Hand Grinder AG4, KPT, DeWalt" },
-      { name: "Hand Grinder AG7, KPT, DeWalt" },
-      { name: "Hand Scanner 7\" Hitachi" },
-      { name: "Bench Grinder" },
-    ],
-  },
-  {
-    category: "Cutting & Lifting",
-    items: [
-      { name: "Chain Pulley Block 3MT" },
-      { name: "Chain Pulley Block 5MT" },
-      { name: "Chain Pulley Block 1MT" },
-      { name: "Argon Set" },
-      { name: "Gas Cutting Set" },
-      { name: "Pug Cutting M/c" },
-    ],
-  },
-  {
-    category: "Ropes & Compressors",
-    items: [
-      { name: "Air Compressor 10 CFM" },
-      { name: "Nylon Ropes 1\"" },
-      { name: "Manila Rope 3/4\"" },
-    ],
-  },
-  {
-    category: "Hydraulic & Testing",
-    items: [
-      { name: "Radial Drill 50mm 1 Mtr.x1 Mtr Bed" },
-      { name: "Flexible Grinder 3HP" },
-      { name: "Hydraulic Testing Hand Pump 30 Kg/cm²" },
-      { name: "Hydraulic Testing Electrical Pump 70 Kg/cm²" },
-    ],
-  },
-  {
-    category: "Ovens & Misc Equipment",
-    items: [
-      { name: "Electric Oven 200WATT for Welding Electrode" },
-      { name: "Rope Cuppy  2/1,2" },
-      { name: "Mother Oven 50 Kg" },
-      { name: "Holiday Testing Machine" },
-      { name: "Flexible Grinder 3HP" },
-    ],
-  },
-];
+function RenderData({ html, search }) {
+  let count = 0;
 
-const totalMachines = machineryData.reduce((acc, cat) => acc + cat.items.length, 0);
+  return (
+    <div className="space-y-2">
+      {parse(html || "", {
+        replace: (domNode) => {
+          if (domNode.name === "li") {
+            const text = domNode.children?.[0]?.data?.toLowerCase?.() || "";
+
+            // search filter
+            if (search && !text.includes(search.toLowerCase())) {
+              return <></>;
+            }
+
+            count++;
+
+            return (
+              <div className="flex items-center gap-4 px-6 py-3.5 hover:bg-[#fff5f5] transition-colors group">
+                <span className="text-xs font-bold text-[rgb(134,134,134)] w-6 shrink-0 group-hover:text-[#c20016] transition-colors">
+                  {String(count).padStart(2, "0")}
+                </span>
+                <span className="shrink-0">
+                  <svg
+                    className="w-3.5 h-3.5 text-[#c20016]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={3}
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </span>
+                <span className="text-[#1a191d] text-sm leading-relaxed flex-1">
+                  {domToReact(domNode.children)}
+                </span>
+              </div>
+            );
+          }
+        },
+      })}
+    </div>
+  );
+}
 
 export default function MachineryListPage() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [search, setSearch] = useState("");
 
-  const filtered = machineryData
-    .map((cat) => ({
-      ...cat,
-      items: cat.items.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      ),
-    }))
+  const [fetchAllData, setFetchAllData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/resource/machinery");
+        setFetchAllData(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const filtered = fetchAllData
+    .slice(1)
     .filter(
       (cat) =>
-        (activeCategory === null || cat.category === activeCategory) &&
-        cat.items.length > 0
+        activeCategory === null ||
+        cat?.category?.trim()?.toLowerCase() ===
+          activeCategory?.trim()?.toLowerCase(),
     );
+
+  const totalMachines = fetchAllData.reduce((acc, cat) => {
+    const matches = cat?.items?.match(/<li/gi) || [];
+
+    return acc + matches.length;
+  }, 0);
 
   return (
     <main className="div-spread">
-
       {/* ── Hero Banner ── */}
       <section className="container-fluid px-6 pt-8 pb-10">
         <div className="relative bg-[#1a191d] overflow-hidden">
@@ -109,24 +97,38 @@ export default function MachineryListPage() {
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#c20016]" />
 
           <div className="relative px-8 py-12 md:px-14 flex flex-col md:flex-row md:items-center gap-8">
-            <div className="flex-1">
-              <h1 className="!text-[#fefeff] text-4xl md:text-5xl font-extrabold leading-tight mb-3 tracking-tight">
-                Machinery <span className="text-[#c20016]">List</span>
-              </h1>
-              <p className="leading-relaxed max-w-md">
-                Complete inventory of fire safety machinery and equipment used by Swipe Fire
-                for installation, inspection, and maintenance services.
-              </p>
-            </div>
+            {fetchAllData.slice(0, 1).map((data) => (
+              <div className="flex-1" key={data._id}>
+                <h1 className="!text-[#fefeff] text-4xl md:text-5xl font-extrabold leading-tight mb-3 tracking-tight">
+                  {data?.heading?.split(" ").map((word, idx) => (
+                    <span
+                      key={idx}
+                      className={`${idx === data?.heading?.split(" ").length - 1 ? "text-[#c20016]" : "text-white"}`}
+                    >
+                      {" " + word}
+                    </span>
+                  ))}
+                </h1>
+                <p className="leading-relaxed max-w-md">{data.description}</p>
+              </div>
+            ))}
 
             <div className="flex gap-4 md:flex-col md:gap-3 shrink-0">
               <div className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-xl px-6 py-4 text-center">
-                <p className="text-[#c20016] text-3xl font-extrabold">{totalMachines}+</p>
-                <p className="text-[rgba(255,255,255,0.45)] text-xs mt-0.5">Machines Listed</p>
+                <p className="text-[#c20016] text-3xl font-extrabold">
+                  {totalMachines}+
+                </p>
+                <p className="text-[rgba(255,255,255,0.45)] text-xs mt-0.5">
+                  Machines Listed
+                </p>
               </div>
               <div className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-xl px-6 py-4 text-center">
-                <p className="text-[#c20016] text-3xl font-extrabold">{machineryData.length}</p>
-                <p className="text-[rgba(255,255,255,0.45)] text-xs mt-0.5">Categories</p>
+                <p className="text-[#c20016] text-3xl font-extrabold">
+                  {fetchAllData.slice(1).length}
+                </p>
+                <p className="text-[rgba(255,255,255,0.45)] text-xs mt-0.5">
+                  Categories
+                </p>
               </div>
             </div>
           </div>
@@ -176,15 +178,18 @@ export default function MachineryListPage() {
           >
             All
           </button>
-          {machineryData.map((cat) => (
+          {fetchAllData.slice(1).map((cat) => (
             <button
-              key={cat.category}
-              onClick={() => setActiveCategory(cat.category)}
-              className={`text-xs px-4 py-1.5 rounded-full border font-medium transition-all ${
-                activeCategory === cat.category
-                  ? "bg-[#c20016] text-[#fefeff] border-[#c20016]"
-                  : "bg-[#fefeff] text-[rgb(134,134,134)] border-gray-200 hover:border-[#c20016] hover:text-[#c20016]"
+              key={cat._id}
+              onClick={() =>
+                setActiveCategory(cat?.category?.trim()?.toLowerCase())
+              }
+              className={`text-xs px-4 py-2  rounded-full border ${
+                activeCategory === cat?.category?.trim()?.toLowerCase()
+                  ? "bg-[#c20016] text-white"
+                  : ""
               }`}
+              style={{ textTransform: "uppercase" }}
             >
               {cat.category}
             </button>
@@ -202,7 +207,7 @@ export default function MachineryListPage() {
           <div className="grid gap-5">
             {filtered.map((cat) => (
               <div
-                key={cat.category}
+                key={cat._id}
                 className="border border-gray-100 rounded-2xl overflow-hidden"
               >
                 {/* Category Header */}
@@ -212,36 +217,13 @@ export default function MachineryListPage() {
                     {cat.category}
                   </h5>
                   <span className="ml-auto bg-[rgba(194,0,22,0.2)] text-[#ff5555] text-xs px-2.5 py-0.5 rounded-full font-medium">
-                    {cat.items.length} items
+                    {(cat?.items?.match(/<li/gi) || []).length} items
                   </span>
                 </div>
 
                 {/* Items */}
                 <div className="divide-y divide-gray-50">
-                  {cat.items.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-4 px-6 py-3.5 hover:bg-[#fff5f5] transition-colors group"
-                    >
-                      <span className="text-xs font-bold text-[rgb(134,134,134)] w-6 shrink-0 group-hover:text-[#c20016] transition-colors">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
-                      <span className="shrink-0">
-                        <svg
-                          className="w-3.5 h-3.5 text-[#c20016]"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={3}
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-                      <span className="text-[#1a191d] text-sm leading-relaxed flex-1">
-                        {item.name}
-                      </span>
-                    </div>
-                  ))}
+                  <RenderData html={cat.items} search={search} />
                 </div>
               </div>
             ))}

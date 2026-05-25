@@ -24,8 +24,14 @@ const corevalueSchema = new mongoose.Schema({
     description: String,
 })
 
+const compinfoSchema = new mongoose.Schema({
+    heading: String,
+    description: String,
+})
+
 export const AboutData = mongoose.models.About || mongoose.model("About", AboutSchema);
 export const ProductionData = mongoose.models.Production || mongoose.model("Production", ProductionSchema);
 export const WhatwedoData = mongoose.models.Whatwedo || mongoose.model("Whatwedo", WhatwedoSchema);
 export const ManufactureData = mongoose.models.Manufacture || mongoose.model("Manufacture", manufactureSchema);
 export const CorevalueData = mongoose.models.Corevalue || mongoose.model("Corevalue", corevalueSchema);
+export const CompinfoData = mongoose.models.Compinfo || mongoose.model("Compinfo", compinfoSchema);

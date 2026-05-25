@@ -12,6 +12,7 @@ import CKEditorClient from "@/app/(admin)/dashboard/CKEditorClient";
 interface HeroData {
   _id: string;
   heading: string;
+  title: string;
   description: string;
 }
 
@@ -23,6 +24,7 @@ export default function UserInfoCard() {
 
   const [HerosecData, setHerosecData] = useState({
     heading: "",
+    title: "",
     description: "",
   });
 
@@ -78,12 +80,12 @@ export default function UserInfoCard() {
       <h3 className="mb-5 text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-7">
         Hero Section
       </h3>
-      <div className="bg-white p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
-        {fetchAllData.map((data) => (
-          <div
-            key={data._id}
-            className="flex flex-col-reverse gap-6 lg:flex-row lg:items-start lg:justify-between"
-          >
+      {fetchAllData.map((data) => (
+        <div
+          key={data._id}
+          className="bg-white mb-5 p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
+        >
+          <div className="flex flex-col-reverse gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <div className="grid grid-cols-1 gap-4 lg:gap-7 2xl:gap-x-32">
                 <div>
@@ -94,6 +96,16 @@ export default function UserInfoCard() {
                     {data.heading}
                   </p>
                 </div>
+                {data.title && (
+                  <div>
+                    <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                      Title
+                    </p>
+                    <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                      {data.title}
+                    </p>
+                  </div>
+                )}
 
                 <div>
                   <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
@@ -136,72 +148,72 @@ export default function UserInfoCard() {
               </button>
             </div>
           </div>
-        ))}
 
-        <Modal
-          isOpen={isOpen}
-          onClose={closeModal}
-          className="max-w-[700px] m-4"
-        >
-          <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
-            <div className="px-2 pr-14">
-              <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
-                Edit Data
-              </h4>
-            </div>
-            <form onSubmit={handleUpdate} className="flex flex-col ">
-              <div className="custom-scrollbar h-[auto] overflow-y-scroll px-2 pb-3">
-                <div className="mt-7">
-                  <div className="flex flex-col gap-4">
-                    <div className="col-span-2 lg:col-span-1">
-                      <Label>Heading</Label>
-                      <Input
-                        type="text"
-                        id="heading"
-                        value={HerosecData.heading}
-                        onChange={(e) =>
-                          setHerosecData({
-                            ...HerosecData,
-                            heading: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
+          <Modal
+            isOpen={isOpen}
+            onClose={closeModal}
+            className="max-w-[700px] m-4"
+          >
+            <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
+              <div className="px-2 pr-14">
+                <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
+                  Edit Data
+                </h4>
+              </div>
+              <form onSubmit={handleUpdate} className="flex flex-col ">
+                <div className="custom-scrollbar h-[auto] overflow-y-scroll px-2 pb-3">
+                  <div className="mt-7">
+                    <div className="flex flex-col gap-4">
+                      <div className="col-span-2 lg:col-span-1">
+                        <Label>Heading</Label>
+                        <Input
+                          type="text"
+                          id="heading"
+                          value={HerosecData.heading}
+                          onChange={(e) =>
+                            setHerosecData({
+                              ...HerosecData,
+                              heading: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
 
-                    <div className="col-span-2 lg:col-span-1">
-                      <Label>Description</Label>
-                      <CKEditorClient
-                        value={HerosecData.description}
-                        onChange={(data: string) =>
-                          setHerosecData((prev) => ({
-                            ...prev,
-                            description: data,
-                          }))
-                        }
-                      />
+                      <div className="col-span-2 lg:col-span-1">
+                        <Label>Description</Label>
+                        <CKEditorClient
+                          value={HerosecData.description}
+                          onChange={(data: string) =>
+                            setHerosecData((prev) => ({
+                              ...prev,
+                              description: data,
+                            }))
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-3 px-2 mt-6 justify-end">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => {
-                    closeModal();
-                    setEditId(null);
-                  }}
-                >
-                  Close
-                </Button>
-                <Button size="sm" type="submit">
-                  Save Changes
-                </Button>
-              </div>
-            </form>
-          </div>
-        </Modal>
-      </div>
+                <div className="flex items-center gap-3 px-2 mt-6 justify-end">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      closeModal();
+                      setEditId(null);
+                    }}
+                  >
+                    Close
+                  </Button>
+                  <Button size="sm" type="submit">
+                    Save Changes
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </Modal>
+        </div>
+      ))}
     </div>
   );
 }

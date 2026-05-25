@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  Fuel,
-  MessageSquare,
-  PhoneCall,
-  ShoppingBag,
-} from "lucide-react";
+import { Fuel, MessageSquare, PhoneCall, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import { FaInstalod } from "react-icons/fa6";
@@ -105,8 +100,9 @@ const Service = () => {
     },
   ];
 
- const DefaultIcon = () => <LuLayoutGrid color="#9B2335" size={40} strokeWidth={1} />;
-
+  const DefaultIcon = () => (
+    <LuLayoutGrid color="#9B2335" size={40} strokeWidth={1} />
+  );
 
   return (
     <main className="container-fluid">
@@ -159,7 +155,7 @@ const Service = () => {
                     style={{ borderRadius: "50px" }}
                     className="bg-[#FEF2F2] w-19 h-19 mb-3  flex justify-center items-center"
                   >
-                    {serviceicons[index]?.icon  || <DefaultIcon/> }
+                    {serviceicons[index]?.icon || <DefaultIcon />}
                   </div>
                   <div>
                     <h3>{data.heading}</h3>
@@ -213,7 +209,7 @@ const Service = () => {
                         style={{ borderRadius: "50px" }}
                         className="bg-[#FDFFFE] w-19 h-19 mb-3  flex justify-center items-center"
                       >
-                        {serviceicons[index]?.icon  || <DefaultIcon/> }
+                        {serviceicons[index]?.icon || <DefaultIcon />}
                       </div>
                       <div>
                         <strong>0{index + 1}</strong>
@@ -251,10 +247,9 @@ const Service = () => {
         </div>
       </div>
 
-
-<SafetyServices/>
-  <FireDetectionPage/>
-  <SystemIntegrantPage/>
+      <SafetyServices />
+      <FireDetectionPage />
+      <SystemIntegrantPage />
 
       {serviceData
         .filter((user) => user._id === "69b14e59b472d437ba2f5f00")
@@ -285,10 +280,6 @@ const Service = () => {
             </div>
           </div>
         ))}
-
-
-
-
 
       <div className="container-fluid bg-[#C20016] p-1 lg:!p-5 div-spread">
         <div className="container mb-26 mt-10 text-center">
@@ -408,10 +399,7 @@ const Service = () => {
         </div>
       </div>
 
-
-<Amc/>
-
-
+      <Amc />
     </main>
   );
 };

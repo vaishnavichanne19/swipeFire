@@ -64,7 +64,8 @@ p {
   font-family: var(--font-para) !important;
 }
 ul li,
-ol li {
+ol li,
+.amc-points ul li {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.6;
@@ -2231,4 +2232,13 @@ a {
 .whatsapp-float:hover {
     color: #fff;
     transform: scale(1.1);
+}
+
+.safety-service ul {
+  padding-left: 0 !important;
+}
+.consultant-design-point ul{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }

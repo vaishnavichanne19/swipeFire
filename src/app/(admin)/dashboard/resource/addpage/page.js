@@ -81,8 +81,7 @@ const AddData = () => {
     setvideoFile(file);
   };
 
-
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -119,14 +118,13 @@ const AddData = () => {
     try {
       const res = await axios.post("/api/resource", formData);
       if (res.data.success) {
-      toast.success("Data Added Successfully");
-      router.push("/dashboard/resource");
-    }
+        toast.success("Data Added Successfully");
+        router.push("/dashboard/resource");
+      }
     } catch (error) {
       toast.error("Add Failed");
     }
   };
-
 
   return (
     <main>
@@ -186,7 +184,8 @@ const AddData = () => {
                     </div>
                   )}
 
-                 {(AddData.resourcetype === "PDF's" || AddData.resourcetype === "Certificates") && (
+                  {(AddData.resourcetype === "PDF's" ||
+                    AddData.resourcetype === "Certificates") && (
                     <div className="col-span-2 lg:col-span-1">
                       <Label>Upload PDF</Label>
                       <Input
@@ -209,7 +208,12 @@ const AddData = () => {
                       </div>
                       <h4 className="text-center">OR</h4>
                       <div className="col-span-2 lg:col-span-1">
-                        <Label>YouTube Link [Example: (https://www.youtube.com/watch?v=<span className="text-red-500">oi4MBo-eyBk</span>&t=1s) Add only video id]</Label>
+                        <Label>
+                          YouTube Link [Example:
+                          (https://www.youtube.com/watch?v=
+                          <span className="text-red-500">oi4MBo-eyBk</span>
+                          &t=1s) Add only video id]
+                        </Label>
                         <Input
                           type="text"
                           placeholder="Enter YouTube URL"
@@ -228,26 +232,26 @@ const AddData = () => {
                   {AddData.resourcetype === "Certificates" && (
                     <div>
                       <h4 className="text-center">OR</h4>
-                    <div className="col-span-2 lg:col-span-1">
-                      <Label>Image</Label>
-                      <Input
-                        type="file"
-                        accept="image/webp"
-                        onChange={handleImageChange}
-                        className="w-full border p-2 my-3"
-                      />
-
-                      {previewimg && (
-                        <Image
-                          src={previewimg}
-                          alt="Images"
-                          width={200}
-                          height={150}
-                          className="mt-2 rounded"
+                      <div className="col-span-2 lg:col-span-1">
+                        <Label>Image</Label>
+                        <Input
+                          type="file"
+                          accept="image/webp"
+                          onChange={handleImageChange}
+                          className="w-full border p-2 my-3"
                         />
-                      )}
+
+                        {previewimg && (
+                          <Image
+                            src={previewimg}
+                            alt="Images"
+                            width={200}
+                            height={150}
+                            className="mt-2 rounded"
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
                   )}
                 </div>
               </div>
