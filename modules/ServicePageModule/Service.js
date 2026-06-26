@@ -35,7 +35,7 @@ const SystemSchema = new mongoose.Schema({
   para: String,
   description: String,
   systemtype: {
-    type: [String],
+    type: String,
     enum: [
       "All",
       "Active Fire Protection",
@@ -44,7 +44,7 @@ const SystemSchema = new mongoose.Schema({
       "Water Curtain Systems",
     ],
     required: true,
-    default: ["All"],
+    default: "All",
   },
   points: String,
 });

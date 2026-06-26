@@ -29,12 +29,12 @@ function RenderData({ html }) {
 
 function RenderMissionData({ html }) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 ">
       {parse(html, {
         replace: (domNode) => {
           if (domNode.name === "li") {
             return (
-              <li className="flex items-start gap-3">
+              <li className="my-2 flex items-start gap-3">
                 <svg
                   className="w-4 h-4 text-[#c20016] mt-0.5 shrink-0"
                   viewBox="0 0 24 24"

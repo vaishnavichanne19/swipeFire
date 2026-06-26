@@ -4,7 +4,6 @@ import { SystemData } from "../../../../../modules/ServicePageModule/Service";
 
 export async function POST(req) {
   await connectDB();
-
   try {
     const { heading, points, para, description, systemtype } = await req.json();
 
@@ -12,7 +11,7 @@ export async function POST(req) {
       heading,
       description,
       para,
-      systemtype,
+      systemtype: Array.isArray(systemtype) ? systemtype[0] : systemtype, // ✅ safety check
       points,
     });
 

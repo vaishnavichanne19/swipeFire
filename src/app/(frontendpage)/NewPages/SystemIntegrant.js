@@ -29,7 +29,7 @@ function RenderData({ html, search }) {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 <div>
-                  <span className="text-[rgb(156, 154, 154)] text-lg leading-relaxed">
+                  <span className="text-[#c20016] text-md leading-relaxed">
                     {domToReact(domNode.children)}
                   </span>
                 </div>
@@ -44,7 +44,6 @@ function RenderData({ html, search }) {
 
 export default function SystemIntegrantPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-
   const [fetchAllData, setFetchAllData] = useState([]);
 
   useEffect(() => {
@@ -59,10 +58,23 @@ export default function SystemIntegrantPage() {
     fetchData();
   }, []);
 
+  // ✅ Array ya string dono handle karta hai
+  const getType = (item) =>
+    Array.isArray(item.systemtype) ? item.systemtype[0] : item.systemtype;
+
   const filtered =
     activeCategory === "All"
-      ? fetchAllData.slice(1)
-      : fetchAllData.slice(1).filter((s) => s.systemtype === activeCategory);
+      ? fetchAllData.slice(1).filter((s) => getType(s) !== "All")
+      : fetchAllData.slice(1).filter((s) => getType(s) === activeCategory);
+
+  const uniqueCategories = [
+    ...new Map(
+      fetchAllData
+        .slice(1)
+        .filter((cat) => getType(cat) !== "All")
+        .map((cat) => [getType(cat), cat]),
+    ).values(),
+  ];
 
   return (
     <main className="div-spread">
@@ -95,17 +107,18 @@ export default function SystemIntegrantPage() {
             >
               All
             </button>
-            {fetchAllData.slice(1).map((cat) => (
+
+            {uniqueCategories.map((cat) => (
               <button
                 key={cat._id}
-                onClick={() => setActiveCategory(cat.systemtype)}
+                onClick={() => setActiveCategory(getType(cat))}
                 className={`text-xs px-4 py-2 rounded-full border font-semibold transition-all duration-200 ${
-                  activeCategory === cat.systemtype
+                  activeCategory === getType(cat)
                     ? "bg-[#c20016] text-[#fefeff] border-[#c20016]"
                     : "bg-[#fefeff] text-[rgb(134,134,134)] border-gray-200 hover:border-[#c20016] hover:text-[#c20016]"
                 }`}
               >
-                {cat.systemtype}
+                {getType(cat)}
               </button>
             ))}
           </div>
@@ -118,17 +131,14 @@ export default function SystemIntegrantPage() {
                 key={svc._id}
                 className="border border-gray-100 rounded-2xl overflow-hidden"
               >
-                {/* Card Header */}
                 <button className="w-full bg-[#1a191d] px-6 py-4 flex items-center gap-4 text-left hover:bg-[#222] transition-colors">
                   <div className="flex-1">
                     <span className="text-[rgba(255,255,255,0.4)] text-[10px] font-bold tracking-[1.5px] uppercase block mb-0.5">
-                      {svc.systemtype}
+                      {getType(svc)} {/* ✅ */}
                     </span>
                     <h3 className="!text-[#fefeff]">{svc.heading}</h3>
                   </div>
                 </button>
-
-                {/* Card Body */}
 
                 <div className="px-6 py-6 bg-[#fafafa] border-t border-gray-100">
                   {svc.para && (
@@ -136,15 +146,12 @@ export default function SystemIntegrantPage() {
                       <p dangerouslySetInnerHTML={{ __html: svc.para }}></p>
                     </div>
                   )}
-
                   {svc.description && (
                     <p
                       className="mb-4"
                       dangerouslySetInnerHTML={{ __html: svc.description }}
                     ></p>
                   )}
-
-                  {/* Sub Items */}
                   {svc.points && (
                     <div className="grid gap-3 mt-2">
                       <RenderData html={svc.points} />

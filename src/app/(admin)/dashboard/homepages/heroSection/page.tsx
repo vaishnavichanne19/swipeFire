@@ -88,14 +88,6 @@ export default function UserInfoCard() {
           <div className="flex flex-col-reverse gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <div className="grid grid-cols-1 gap-4 lg:gap-7 2xl:gap-x-32">
-                <div>
-                  <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
-                    Heading
-                  </p>
-                  <p className="text-sm font-medium text-gray-800 dark:text-white/90">
-                    {data.heading}
-                  </p>
-                </div>
                 {data.title && (
                   <div>
                     <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
@@ -106,6 +98,14 @@ export default function UserInfoCard() {
                     </p>
                   </div>
                 )}
+                <div>
+                  <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
+                    Heading
+                  </p>
+                  <p className="text-sm font-medium text-gray-800 dark:text-white/90">
+                    {data.heading}
+                  </p>
+                </div>
 
                 <div>
                   <p className="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400">
@@ -164,6 +164,22 @@ export default function UserInfoCard() {
                 <div className="custom-scrollbar h-[auto] overflow-y-scroll px-2 pb-3">
                   <div className="mt-7">
                     <div className="flex flex-col gap-4">
+                      {HerosecData.title && (
+                        <div className="col-span-2 lg:col-span-1">
+                          <Label>Title</Label>
+                          <Input
+                            type="text"
+                            id="title"
+                            value={HerosecData.title}
+                            onChange={(e) =>
+                              setHerosecData({
+                                ...HerosecData,
+                                title: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
+                      )}
                       <div className="col-span-2 lg:col-span-1">
                         <Label>Heading</Label>
                         <Input

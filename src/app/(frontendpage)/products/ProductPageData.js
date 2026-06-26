@@ -30,6 +30,7 @@ const ProductPageData = () => {
 
   // product list
   const [productList, setProductList] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const firstItem = productList[0];
   const SecondItem = productList[1];
   const ThirdItem = productList[2];
@@ -47,11 +48,11 @@ const ProductPageData = () => {
     fetchData();
   }, []);
 
-  const filteredProducts =
+  const filteredProducts = (
     category === "All"
       ? resetData
-      : resetData.filter((p) => p.category === category);
-
+      : resetData.filter((p) => p.category === category)
+  ).filter((p) => p.heading?.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // product type list
   const [activeIndex, setActiveIndex] = useState(0);
@@ -206,46 +207,82 @@ const ProductPageData = () => {
       </div>
 
       <div className="container div-spread">
-        {firstItem && <h2 className="py-5">{firstItem.heading}</h2>}
+        <div className="flex justify-between items-center">
+          {firstItem && <h2 className="py-5">{firstItem.heading}</h2>}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-full max-w-lg">
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setVisible(6);
+                }}
+                className="w-full border-2 border-[#DA170A] rounded-full px-6 py-3 pr-12 text-base outline-none focus:shadow-md transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setVisible(6);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#DA170A] text-xl font-bold"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        <div>
+          {filteredProducts.length === 0 ? (
+            <h4 className="text-center py-20 !text-gray-600 ">
+              No Product found
+            </h4>
+          ) : (
+            <div className="row flex justify-center ">
+              {filteredProducts.slice(0, visible).map((data) => (
+                <div
+                  key={data._id}
+                  className="col-lg-4 col-md-6 col-sm-12 my-25 lg:!my-5"
+                  data-aos="fade-up"
+                  data-aos-delay={200}
+                >
+                  <div className="products-card mx-2 ">
+                    <div className="card-inner">
+                      {data.productimage && (
+                        <div className="product-img relative">
+                          <Image
+                            src={data.productimage}
+                            alt={data.heading}
+                            fill
+                            objectFit="contain"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-center">
+                          <b>{data.heading}</b>
+                        </h4>
 
-        <div className="row flex justify-center ">
-          {filteredProducts.slice(0, visible).map((data) => (
-            <div
-              key={data._id}
-              className="col-lg-4 col-md-6 col-sm-12 my-25 lg:!my-5"
-              data-aos="fade-up"
-              data-aos-delay={200}
-            >
-              <div className="products-card mx-2 ">
-                <div className="card-inner">
-                  {data.productimage && (
-                    <div className="product-img relative">
-                      <Image
-                        src={data.productimage}
-                        alt={data.heading}
-                        fill
-                        objectFit="contain"
-                      />
+                        <Link href={`/products/${data._id}`}>
+                          <button className="read-more-red-bg mt-2">
+                            <span className="circle-red-bg" aria-hidden="true">
+                              <span className="icon-red-bg arrow-red-bg" />
+                            </span>
+                            <span className="button-text-red-bg">
+                              Read More
+                            </span>
+                          </button>
+                        </Link>
+                      </div>
                     </div>
-                  )}
-                  <div>
-                    <h4 className="text-center">
-                      <b>{data.heading}</b>
-                    </h4>
-
-                    <Link href={`/products/${data._id}`}>
-                      <button className="read-more-red-bg mt-2">
-                        <span className="circle-red-bg" aria-hidden="true">
-                          <span className="icon-red-bg arrow-red-bg" />
-                        </span>
-                        <span className="button-text-red-bg">Read More</span>
-                      </button>
-                    </Link>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </div>
       {visible < filteredProducts.length && (
@@ -317,7 +354,10 @@ const ProductPageData = () => {
                       <p
                         className="my-4  "
                         dangerouslySetInnerHTML={{
-                          __html: limitWords(alltypeProducts[activeIndex].description, 20),
+                          __html: limitWords(
+                            alltypeProducts[activeIndex].description,
+                            20,
+                          ),
                         }}
                       ></p>
                     </div>
@@ -401,7 +441,9 @@ const ProductPageData = () => {
                     <div className="shopping-para  pt-27 2xl:pt-40 px-3 lg:!px-5 pb-5 lg:!pb-0">
                       <h4>{item.heading}</h4>
                       <p
-                        dangerouslySetInnerHTML={{ __html: limitWords(item.description, 20), }}
+                        dangerouslySetInnerHTML={{
+                          __html: limitWords(item.description, 20),
+                        }}
                       ></p>
                     </div>
                   </div>
@@ -420,10 +462,6 @@ const ProductPageData = () => {
           </div>
         </div>
       </div>
-
-
-
-
     </main>
   );
 };

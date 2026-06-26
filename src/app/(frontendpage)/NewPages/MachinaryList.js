@@ -137,36 +137,6 @@ export default function MachineryListPage() {
 
       {/* ── Search + Filter ── */}
       <section className="container div-spread">
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1">
-            <svg
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[rgb(134,134,134)]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Search machinery..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm text-[#1a191d] placeholder:text-[rgb(134,134,134)] focus:outline-none focus:border-[#c20016] bg-[#fefeff]"
-            />
-          </div>
-          {activeCategory && (
-            <button
-              onClick={() => setActiveCategory(null)}
-              className="text-xs text-[#c20016] border border-[#c20016] px-4 py-2.5 rounded-xl hover:bg-[#c20016] hover:text-white transition-colors"
-            >
-              Clear Filter ✕
-            </button>
-          )}
-        </div>
-
         <div className="flex flex-wrap gap-2 mt-3">
           <button
             onClick={() => setActiveCategory(null)}

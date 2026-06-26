@@ -65,7 +65,7 @@ p {
 }
 ul li,
 ol li,
-.amc-points ul li {
+.amc-points ul .amc-li {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.6;
@@ -1644,7 +1644,6 @@ a {
   color: var(--pararedfont);
 }
 
-
 /* Keyframes */
 @keyframes fillText {
   0% {
@@ -1675,7 +1674,8 @@ a {
   background-color: var(--bgcolor);
   height: 100%;
 }
-.branch_info h5 b, .branch_info h5 b a{
+.branch_info h5 b,
+.branch_info h5 b a {
   color: var(--pararedfont);
 }
 
@@ -1702,7 +1702,7 @@ a {
   background-color: var(--pararedfont);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.branch_info.active_branch h5 b{
+.branch_info.active_branch h5 b {
   color: var(--parawhitefont) !important;
 }
 .branch_info.active_branch .contact-circle {
@@ -2209,35 +2209,34 @@ a {
   }
 }
 
-
 .whatsapp-float {
   display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #25d366;
-    border-radius: 50%;
-    bottom: 10px;
-    box-shadow: 2px 2px 10px #0003;
-    font-size: 30px;
-    height: 60px;
-    width: 60px;
-    position: fixed;
-    right: 0;
-    bottom: 1%;
-    text-decoration: none;
-    transition: transform .3s ease-in-out;
-    z-index: 999;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  border-radius: 50%;
+  bottom: 10px;
+  box-shadow: 2px 2px 10px #0003;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  right: 0;
+  bottom: 1%;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
 }
 
 .whatsapp-float:hover {
-    color: #fff;
-    transform: scale(1.1);
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .safety-service ul {
   padding-left: 0 !important;
 }
-.consultant-design-point ul{
+.consultant-design-point ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;

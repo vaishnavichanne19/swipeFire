@@ -12,7 +12,7 @@ function RenderData({ html }) {
         replace: (domNode) => {
           if (domNode.name === "li") {
             return (
-              <div className="flex gap-3 items-center">
+              <div className="amc-li flex gap-3 items-center">
                 <span className="w-5 h-5">
                   <CircleCheckBig size={20} color="#c20016" />
                 </span>

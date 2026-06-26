@@ -176,13 +176,13 @@ const navItems: NavItem[] = [
         pro: false,
       },
       {
-        name: "AMC",
-        path: "/dashboard/service/amc",
+        name: "System Integrant",
+        path: "/dashboard/service/systemint",
         pro: false,
       },
       {
-        name: "System Integrant",
-        path: "/dashboard/service/systemint",
+        name: "AMC",
+        path: "/dashboard/service/amc",
         pro: false,
       },
     ],
